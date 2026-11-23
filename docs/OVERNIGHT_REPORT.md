@@ -36,3 +36,32 @@ push 전 검사(범위 `origin/<브랜치>..<브랜치>`):
 
 - 로그인·비밀번호 요구는 없었다(GIT_TERMINAL_PROMPT=0으로 실행).
 - 작업 6에서는 두 브랜치 모두 'push한 브랜치'로 본다(main은 작업 0에서 push 명령이 성공했고 바뀐 것이 없었을 뿐이다).
+
+## 추가 지시 (03:35 받음)
+- 10:00까지. 작업 5 다음에 작업 7~9를 하고, 10:00이 지나면 새 작업을 시작하지 않고 작업 6으로 마무리한다.
+- 탐색 시드는 9001~9999를 쓴다. 작업 8·9는 main에서 만든 새 브랜치에서만 코드를 바꾸고, 병합·push하지 않는다.
+
+## 작업 1. 깨끗한 복제본에서 재현 (03:33~03:35)
+
+`git clone --branch main <로컬 저장소> /tmp/mojuco_clone`(커밋 255fd06) → `/opt/homebrew/bin/python3.11 -m venv .venv` → `pip install -r requirements.txt`.
+README의 명령을 그대로 실행했다.
+
+| 명령 | 결과 | 시간 |
+|---|---|---|
+| clone | 성공 | 1초 미만 |
+| venv + `pip install -r requirements.txt` | 성공. mujoco 4.0.1, kiwipiepy 0.24.1(+kiwipiepy_model 0.24.0), numpy 2.4.6, scipy 1.17.1, pillow 13.0.0, imageio 2.38.2, imageio-ffmpeg 0.8.1, psutil 7.2.2, pytest 9.2.0 | 7초 (**이 컴퓨터의 pip 캐시를 씀**. 처음 받는 PC는 [더 걸림, 미측정]) |
+| `scripts/check_env.py` | check_env OK (nq 16, nv 15, nu 7, out/check_head.png, 형태소 분석) | 9초 |
+| `python -m pytest` | **42 passed** (36.7초) | 37초 |
+| `demo.py --text "3층 버튼을 눌러줘"` | 3층 눌림 확인 15.1 mm, 보이는 층 1~6 (README 출력 예와 같음) | 1초 |
+| `demo.py --text "엘리베이터 3층을 선택해 줘"` | 3층 눌림 확인 15.1 mm | 2초 |
+| `demo.py --text "버튼은 누르지 말고 대기해"` | 대기합니다 (WAIT) | 1초 |
+| `demo.py --text "3층 누르지 마"` | 대기합니다 (WAIT) | 1초 |
+| `demo.py --text "현재 장면에 없는 7층 버튼을 눌러줘"` | 7층 버튼이 보이지 않아 수행할 수 없습니다 (REJECT) | 1초 |
+| `demo.py --text "4층으로 가자" --seed 5001` | 4층 눌림 확인 15.3 mm (보이는 층 1, 2, 4, 6) | 1초 |
+| `demo.py` (입력에 빈 줄) | '명령>' 뒤 바로 끝남, 종료 코드 0 | - |
+| `eval.py nlu` (복제본의 results/nlu에 씀) | dev 78/78, 기준선 22/78. holdout 29/30은 README대로 **기존 결과 재사용(다시 실행하지 않음)** | 2초 |
+
+- 원본 `results/nlu`와 비교: dev.csv 78행, holdout.csv 30행 모두 `parse_ms`를 뺀 모든 열이 같다. 원본 폴더에는 쓰지 않았다.
+- README대로 되지 않은 곳: 없음 → README 수정 없음.
+- 공식·기준선·추가 평가(`eval.py official/baseline/supplementary`)는 지시 범위 밖이라 실행하지 않았다.
+- `/tmp/mojuco_clone`은 03:35에 지웠다.
