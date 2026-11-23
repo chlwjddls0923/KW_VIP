@@ -7,3 +7,7 @@ __pycache__/
 data/commands_team.tsv
 .pytest_cache/
 MUJOCO_LOG.TXT
+# LLM 실험 (exp/llm-fallback)
+.venv-llm/
+models/
+.cache-llm/

@@ -1,0 +1,60 @@
+{
+  "gguf": "models/Qwen_Qwen3.5-2B-Q4_K_M.gguf",
+  "sha256": "57a1085840f497d764a7fc5d346922dbde961efb54cc792ea81d694fd846a1d8",
+  "bytes": 1396198496,
+  "architecture": "qwen35",
+  "llama_cpp_python": "0.3.37",
+  "n_ctx": 2048,
+  "n_threads": 4,
+  "n_gpu_layers": 0,
+  "load_s": 0.642,
+  "rss_after_mb": 4164.7,
+  "rss_before_mb": 46.8,
+  "thinking": "chat template에 enable_thinking=False를 넘겨 '<think>\\n\\n</think>\\n\\n'를 미리 붙임",
+  "machine": "macOS-26.7.1-arm64-arm-64bit",
+  "cpu_count": 10,
+  "runs": [
+    {
+      "text": "오늘 날씨 좋네",
+      "raw": "{ \"intent\": \"unclear\", \"floor_type\": \"number\",\"base\": 0,\"offset\": 0 }",
+      "json_ok": true,
+      "parsed": {
+        "intent": "unclear",
+        "floor_type": "number",
+        "base": 0,
+        "offset": 0
+      },
+      "seconds": 1.281,
+      "finish_reason": "stop",
+      "prompt_tail": "|im_start|>assistant\n<think>\n\n</think>\n\n"
+    },
+    {
+      "text": "5번 버튼 부탁해",
+      "raw": "{ \"intent\": \"press_now\", \"floor_type\": \"number\",\"base\": 5, \"offset\": 0 }",
+      "json_ok": true,
+      "parsed": {
+        "intent": "press_now",
+        "floor_type": "number",
+        "base": 5,
+        "offset": 0
+      },
+      "seconds": 1.266,
+      "finish_reason": "stop",
+      "prompt_tail": "|im_start|>assistant\n<think>\n\n</think>\n\n"
+    },
+    {
+      "text": "잠깐 기다려 봐",
+      "raw": "{\"intent\": \"wait\", \"floor_type\": \"highest\", \"base\": 0, \"offset\": 0}",
+      "json_ok": true,
+      "parsed": {
+        "intent": "wait",
+        "floor_type": "highest",
+        "base": 0,
+        "offset": 0
+      },
+      "seconds": 1.201,
+      "finish_reason": "stop",
+      "prompt_tail": "|im_start|>assistant\n<think>\n\n</think>\n\n"
+    }
+  ]
+}
