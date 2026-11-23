@@ -156,3 +156,20 @@ README의 명령을 그대로 실행했다.
 
 ## 사후 탐색 → 발표 자료 (04:14)
 - `docs/PRESENTATION_NOTES.md` 6절 '한계와 다음 일'에 '사후 탐색 (공식 결과 아님)' 표와 말할 것 2줄을 덧붙였다.
+
+## 작업 6. 마지막 push (04:14)
+- `git fetch origin` 성공. 원격에만 있는 커밋은 두 브랜치 모두 0이다.
+- push 전 검사(작업 0과 같은 스크립트) 결과 두 브랜치 모두 통과했다.
+  - main: 커밋 7개, 바뀐 파일 14개, 가장 큰 blob 75,792 B(`results/diag/occlusion_map/grid.csv`)
+  - exp/llm-fallback: 커밋 2개, 파일 2개
+- push 결과
+  - main `2ba9361..dd706e5`
+  - exp/llm-fallback `201ed5b..ba83cde`
+  - 인증 요구 없음
+  - 원격 브랜치는 main과 exp/llm-fallback 둘뿐이다. exp/observe-pose와 exp/rule-v2는 push하지 않았다(지시).
+- 이 절을 적은 커밋도 같은 검사를 거쳐 main에 push한다(main은 작업 0과 이번에 push한 브랜치).
+- 정리
+  - 작업 9용 worktree `~/mojuco/KW_VIP_rulev2`를 `git worktree remove`로 지웠다. 브랜치 exp/rule-v2(e5dc1fe)는 남아 있다.
+  - main의 .gitignore에는 LLM 실험 로컬 폴더(`.venv-llm/`, `.cache-llm/`, `models/`)가 없다. 그래서 main·exp/observe-pose에서 untracked로 보였다. 저장소를 바꾸지 않으려고 로컬 전용 `.git/info/exclude`에 넣었다(커밋·push 대상 아님).
+  - main, exp/llm-fallback, exp/observe-pose, exp/rule-v2 모두 `git status`가 깨끗하다. 작업 디렉터리는 main.
+- 10:00 전에 모든 작업을 마쳐서 시간 제한으로 중단하거나 건너뛴 작업은 없다.
