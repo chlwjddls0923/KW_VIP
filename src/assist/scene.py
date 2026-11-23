@@ -38,10 +38,14 @@ def default_layout():
     return {n: POSITIONS[n] for n in FLOORS}
 
 
+def layout_from_perm(perm):
+    """(perm[i]+1)층이 P(i+1)."""
+    return {int(perm[i]) + 1: POSITIONS[i + 1] for i in range(6)}
+
+
 def shuffled_layout(shuffle_seed):
     """숫자 배치 섞기: perm = default_rng(seed).permutation(6), (perm[i]+1)층이 P(i+1)."""
-    perm = np.random.default_rng(shuffle_seed).permutation(6)
-    return {int(perm[i]) + 1: POSITIONS[i + 1] for i in range(6)}
+    return layout_from_perm(np.random.default_rng(shuffle_seed).permutation(6))
 
 
 def layout_string(layout):

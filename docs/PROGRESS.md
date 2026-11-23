@@ -21,7 +21,7 @@
 | 0 환경과 모델 확인 | 완료 | check_env OK, test_model_facts 6/6 |
 | 1 장면 생성기 | 완료 | test_scene 6/6 |
 | 2 IK와 누르기 | 완료 | test_control 3/3 |
-| 3 인식 | 대기 | |
+| 3 인식 | 완료 | test_perception 2/2 |
 | 4 명령 해석 | 대기 | |
 | 5 통합 | 대기 | |
 | 6 평가 | 대기 | |
@@ -52,5 +52,14 @@
 - 원본 XML, ee_site → button_target(z_des (0,−1,0)) 1초 유지: button_3_slide 최대 0 mm
 - 참고 측정: 원본 버튼 앞 10 cm 최소 기울기 약 11°(joint5가 한계 1.19에 닿음)
 
+## 단계 3 기록
+- `camera.py`: `Frame`(rgb, depth, fovy, cam_xpos, cam_xmat; `backproject`, `project`), `capture(renderer, model, data, camera)`
+- `perception.py`: `detect(frame, templates, debug=None)` → `[{floor, score, margin, center, normal}]`, `make_templates(floors)`, `sample_patch`, `zncc_shift`, `save_debug`
+- `scene.py`에 `layout_from_perm(perm)` 추가 (변화 조건의 `rng.permutation(6)` 결과로 배치를 만든다)
+- 변화 40장면(시드 7001~7040): 높이 0.90 m 이상 검출 222/222, 0.90 m 미만 13/18, 받아들인 판독 235개 중 오독 0, 중심 오차 중앙값 0.46 mm·최대 1.28 mm, 법선 오차 최대 0.013°
+- 라벨 방향(기준 위치): 원래 템플릿 0.873~0.927, 뒤집은 템플릿 최대 0.840(6층 좌우 반전). 모두 원래가 더 높다
+- macOS 렌더링 경고: `ARB_clip_control unavailable while mjDEPTH_ZEROFAR requested, depth accuracy will be limited`. 깊이 정밀도가 제한된다는 뜻이지만 위 오차 기준은 통과
+- 숫자 텍스처는 뒤집지 않는다(정면화 패치에서 바로 선 숫자로 보임, `out/perception_debug.png`)
+
 ## 다음 할 일
-- 단계 3: `src/assist/camera.py`, `src/assist/perception.py` (부록 B), `tests/test_perception.py`
+- 단계 4: `src/assist/nlu.py` (부록 D), `data/commands_dev.tsv` (부록 F), `tests/test_nlu.py`
