@@ -1,0 +1,139 @@
+{
+  "model": "E",
+  "name": "gemma4-e2b",
+  "variant": "A",
+  "llama_cpp_python": "0.3.37",
+  "n_gpu_layers": 0,
+  "n_threads": 4,
+  "start": "2026-11-24 03:09:34",
+  "load_s": 1.301,
+  "sanity": [
+    {
+      "q": "대한민국의 수도는 어디인가요? 한 문장으로 답해 주세요.",
+      "answer": "대한민국의 수도는 서울입니다.",
+      "finish": "stop",
+      "seconds": 0.575
+    },
+    {
+      "q": "사과는 보통 무슨 색인가요? 한 문장으로 답해 주세요.",
+      "answer": "사과는 보통 빨간색, 초록색, 노란색 등 다양한 색을 가집니다.",
+      "finish": "stop",
+      "seconds": 0.723
+    },
+    {
+      "q": "엘리베이터는 어떤 일을 하는 기계인가요? 한 문장으로 답해 주세요.",
+      "answer": "엘리베이터는 사람이나 물건을 건물 내의 여러 층 사이를 수직으로 이동시키는 기계입니다.",
+      "finish": "stop",
+      "seconds": 0.871
+    }
+  ],
+  "sets": {
+    "holdout": 30,
+    "adv_test": "미실시(파일 없음)"
+  },
+  "token_check_holdout": {
+    "n_tokens": 844,
+    "add_bos_token": true,
+    "template_uses_bos_token": true,
+    "bos_id": 2,
+    "bos_text": "<bos>",
+    "bos_count_in_prompt": 1,
+    "starts_with_double_bos": false,
+    "special_strings": [
+      "<bos>",
+      "<turn|>",
+      "<|turn>"
+    ],
+    "special_single_token": {
+      "<bos>": true,
+      "<turn|>": true,
+      "<|turn>": true
+    },
+    "first10": [
+      [
+        2,
+        "<bos>"
+      ],
+      [
+        105,
+        "<|turn>"
+      ],
+      [
+        9731,
+        "system"
+      ],
+      [
+        107,
+        "\n"
+      ],
+      [
+        239298,
+        "너"
+      ],
+      [
+        237170,
+        "는"
+      ],
+      [
+        211734,
+        " 엘"
+      ],
+      [
+        237469,
+        "리"
+      ],
+      [
+        239971,
+        "베"
+      ],
+      [
+        47929,
+        "이터"
+      ]
+    ],
+    "last10": [
+      [
+        7246,
+        "으로"
+      ],
+      [
+        113448,
+        " 올라"
+      ],
+      [
+        237272,
+        "가"
+      ],
+      [
+        236743,
+        " "
+      ],
+      [
+        242332,
+        "줘"
+      ],
+      [
+        106,
+        "<turn|>"
+      ],
+      [
+        107,
+        "\n"
+      ],
+      [
+        105,
+        "<|turn>"
+      ],
+      [
+        4368,
+        "model"
+      ],
+      [
+        107,
+        "\n"
+      ]
+    ]
+  },
+  "peak_rss_mb": 3944.9,
+  "end": "2026-11-24 03:11:16"
+}
