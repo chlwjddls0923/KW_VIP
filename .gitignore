@@ -3,8 +3,7 @@ build/
 out/
 __pycache__/
 .DS_Store
-# 사용자가 단계 6에서 넣는 평가 문장 파일 (커밋하지 않음)
-data/commands_holdout.tsv
+# 사용자가 넣는 팀원 평가 문장 파일 (커밋하지 않음). holdout은 평가 후 커밋함
 data/commands_team.tsv
 .pytest_cache/
 MUJOCO_LOG.TXT

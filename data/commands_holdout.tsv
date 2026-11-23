@@ -1,0 +1,30 @@
+3층으로 올라가 줘	PRESS	3
+이층 버튼 눌러줄래	PRESS	2
+엘리베이터에서 4층 좀 찍어줘	PRESS	4
+6층 가야 해	PRESS	6
+일층 선택해	PRESS	1
+5층 눌러주면 좋겠어	PRESS	5
+세 번째 층 선택해 줘	PRESS	3
+2층으로 내려가자	PRESS	2
+5층 말고 2층으로 가자	PRESS	2
+4층 아니고 1층 눌러줘	PRESS	1
+기다리지 말고 지금 6층 눌러	PRESS	6
+3층 누르지 말고 5층 눌러	PRESS	5
+지금은 누르지 말아 줘	WAIT	-
+대기	WAIT	-
+움직이지 마	WAIT	-
+4층 버튼은 건드리지 마	WAIT	-
+아직 아니야, 기다려 줘	WAIT	-
+누르면 안 됩니다	WAIT	-
+정지해	WAIT	-
+누르지 말고 기다렸다가 내가 말하면 눌러	WAIT	-
+8층 눌러줘	REJECT	-
+10층으로 가자	REJECT	-
+0층 버튼 눌러	REJECT	-
+테이블 위 물건 좀 잡아줘	REJECT	-
+노래 틀어줘	REJECT	-
+버튼 색깔이 뭐야?	REJECT	-
+아래로 내려가자	CLARIFY	-
+그 버튼 눌러줘	CLARIFY	-
+몇 층이든 눌러	CLARIFY	-
+3층 누를까 말까	CLARIFY	-
