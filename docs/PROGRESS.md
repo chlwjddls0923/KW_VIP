@@ -9,11 +9,17 @@
 - macOS: MUJOCO_GL 설정 안 함, viewer 쓰지 않음, git push·원격 설정 안 함
 - `data/commands_holdout.tsv`, `data/commands_team.tsv`는 사용자가 단계 6에 넣는다. 그 전에는 찾거나 만들지 않는다. `.gitignore`에 들어 있다.
 
+## 계획과 다르게 한 것 (사용자 승인, 유지)
+1. `.gitignore`에 `data/commands_holdout.tsv`, `data/commands_team.tsv`를 넣었다(사용자 지시). 계획서 4절은 `data/` 전체 커밋이지만 이 두 파일은 커밋하지 않는다.
+2. 경로 상수 모음 `src/assist/paths.py`를 추가했다(계획서 5절 목록에 없는 보조 파일).
+3. `requirements.txt`는 mujoco·kiwipiepy 외 패키지도 설치된 버전으로 고정했다(재현성).
+4. `tests/test_model_facts.py`에 단계 0의 (a)(b) 외에 3절 구조 항목 테스트 4개(모델 크기, 관절 범위, 버튼·패널, 도구 축·충돌 위치)를 더 넣었다.
+
 ## 단계별 상태
 | 단계 | 상태 | 비고 |
 |---|---|---|
 | 0 환경과 모델 확인 | 완료 | check_env OK, test_model_facts 6/6 |
-| 1 장면 생성기 | 대기 | |
+| 1 장면 생성기 | 완료 | test_scene 6/6 |
 | 2 IK와 누르기 | 대기 | |
 | 3 인식 | 대기 | |
 | 4 명령 해석 | 대기 | |
@@ -29,5 +35,13 @@
 - `mujoco.mj_geomDistance` 있음 (단계 2 거리 시험에 사용)
 - 렌더링: macOS 기본 백엔드로 `mujoco.Renderer` 정상 동작
 
+## 단계 1 기록
+- `scene.py`: `build_scene(layout, shuffle_seed, radius)` → `build/scene.xml`, `build/digit_{n}.png`. `Scene(...)`, `reset(dpos, yaw_deg, light)`, `truth()`, `slides()`, `arm_q()`, `renderer`(1280×960, 지연 생성), `close()`
+- 수정 장면: nq 21, nv 20, nu 7. button_target site 삭제, `wrist_collider` 충돌, 오프스크린 1280×960, `overview` 카메라(pos 1.35 0.35 1.55 → 0.25 −0.50 0.92 바라봄, fovy 55)
+- 숫자 텍스처는 뒤집지 않아도 정면에서 바로 읽힌다(MuJoCo 4.0.1, macOS). 정면에서 아래부터 '1 2 / 3 4 / 5 6'
+- `truth()`의 라벨 중심은 slide 0 기준(패널 자세 + (x, 0.081, z))이다. 법선 = 패널 +y축
+- 대기 1.2초: slide 최대 0 mm, 관절 변화 최대 9.3e−8 rad
+- `layout_string(layout)`: P1~P6에 놓인 층 문자열(평가 기록용)
+
 ## 다음 할 일
-- 단계 1: `src/assist/scene.py` (부록 A), `tests/test_scene.py`
+- 단계 2: `src/assist/ik.py`, `src/assist/motion.py` (부록 C), `tests/test_control.py`
