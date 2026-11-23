@@ -1,0 +1,24 @@
+{
+  "model": "qwen35-4b",
+  "variant": "A",
+  "a": "metal",
+  "b": "cpu1",
+  "n": 138,
+  "n_b": 138,
+  "raw_same": 136,
+  "parsed_same": 136,
+  "diff": [
+    {
+      "text": "위로 가자",
+      "metal": "{\"intent\": \"not_command\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}",
+      "cpu1": "{\"intent\": \"press_now\", \"floor_type\": \"relative\", \"base\": 0, \"offset\": 1}",
+      "parsed_same": false
+    },
+    {
+      "text": "6층 가고 싶어",
+      "metal": "{\"intent\": \"press_now\", \"floor_type\": \"number\", \"base\": 6, \"offset\": 0}",
+      "cpu1": "{\"intent\": \"not_command\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}",
+      "parsed_same": false
+    }
+  ]
+}

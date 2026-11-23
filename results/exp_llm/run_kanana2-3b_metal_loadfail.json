@@ -1,0 +1,21 @@
+{
+  "model": "C",
+  "name": "kanana2-3b",
+  "file": "kanana-2-3b-instruct.Q4_K_M.gguf",
+  "repo": "mradermacher/kanana-2-3b-instruct-GGUF",
+  "bytes": 2161793920,
+  "llama_cpp_python": "0.3.37",
+  "n_ctx": 4096,
+  "n_threads": 4,
+  "n_threads_batch": 4,
+  "n_gpu_layers": -1,
+  "seed": 0,
+  "temperature": 0.0,
+  "tag": "metal",
+  "variants": [
+    "A",
+    "B"
+  ],
+  "reset_each_call": true,
+  "load_error": "TemplateSyntaxError: Encountered unknown tag 'generation'. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'."
+}

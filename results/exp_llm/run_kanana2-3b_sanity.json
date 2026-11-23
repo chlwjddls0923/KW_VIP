@@ -1,0 +1,259 @@
+{
+  "model": "C",
+  "name": "kanana2-3b",
+  "file": "kanana-2-3b-instruct.Q4_K_M.gguf",
+  "repo": "mradermacher/kanana-2-3b-instruct-GGUF",
+  "bytes": 2161793920,
+  "llama_cpp_python": "0.3.37",
+  "n_ctx": 4096,
+  "n_threads": 4,
+  "n_threads_batch": 4,
+  "n_gpu_layers": -1,
+  "seed": 0,
+  "temperature": 0.0,
+  "tag": "sanity",
+  "variants": [
+    "A",
+    "B"
+  ],
+  "reset_each_call": true,
+  "template_file": "experiments/llm/templates/kanana_fixed.jinja",
+  "template_sha256": "66baa0b9682817fefe6ad3d01e13470380e0d5f9ccb46664aa773b34a9acedbd",
+  "load_s": 1.898,
+  "architecture": "qwen3",
+  "template_has_enable_thinking": false,
+  "template_len": 10686,
+  "sanity": [
+    {
+      "q": "대한민국의 수도는 어디인가요? 한 문장으로 답해 주세요.",
+      "answer": "서울",
+      "finish": "stop",
+      "seconds": 0.119
+    },
+    {
+      "q": "사과는 보통 무슨 색인가요? 한 문장으로 답해 주세요.",
+      "answer": "빨간색입니다.",
+      "finish": "stop",
+      "seconds": 0.169
+    },
+    {
+      "q": "엘리베이터는 어떤 일을 하는 기계인가요? 한 문장으로 답해 주세요.",
+      "answer": "엘리베이터는 사람이나 물건을 높은 곳이나 낮은 곳으로 이동시키는 기계입니다.",
+      "finish": "stop",
+      "seconds": 0.441
+    }
+  ],
+  "rendered_A": "<|im_start|>system\n너는 엘리베이터 안에서 휠체어에 달린 로봇팔을 돕는 명령 해석기다. 사용자가 로봇팔에게 한 말 한 문장을 읽고, 지금 엘리베이터 층 버튼을 눌러야 하는지 판단해 JSON 하나만 출력한다.\n\nintent (하나를 고른다)\n- press_now: 지금 어떤 층 버튼을 누르라는 요청이다. 그 층으로 가자는 말도 포함한다.\n- wait: 누르지 말라는 말, 기다리거나 멈추라는 말이다.\n- not_command: 버튼을 누르라는 요청이 아니다. 질문, 지난 일 이야기, 조건이 붙어 나중에 할 일, 농담, 상관없는 말이 여기에 든다.\n- unclear: 누르라는 요청이지만 어느 층인지 하나로 정할 수 없거나, 무슨 뜻인지 확실하지 않다.\n\nfloor_type (press_now일 때만 의미가 있다. 다른 intent는 none)\n- number: 층을 직접 말했다. base가 그 층이다.\n- highest: 가장 높은 층이다.\n- lowest: 가장 낮은 층이다.\n- relative: 어떤 층에서 몇 층 위나 아래다. base가 기준 층, offset이 차이다(위는 +, 아래는 -).\n- none: 층이 없다.\n쓰지 않는 base와 offset은 0으로 둔다.\n\n예시\n문장: 5층 버튼 한 번 눌러 줄 수 있어?\n{\"intent\": \"press_now\", \"floor_type\": \"number\", \"base\": 5, \"offset\": 0}\n문장: 2층 말고 6층으로 부탁해요\n{\"intent\": \"press_now\", \"floor_type\": \"number\", \"base\": 6, \"offset\": 0}\n문장: 제일 아래층으로 내려가 줘\n{\"intent\": \"press_now\", \"floor_type\": \"lowest\", \"base\": 0, \"offset\": 0}\n문장: 3층에서 두 층 더 올라간 층 눌러\n{\"intent\": \"press_now\", \"floor_type\": \"relative\", \"base\": 3, \"offset\": 2}\n문장: 가장 위에 있는 버튼 눌러 줄래\n{\"intent\": \"press_now\", \"floor_type\": \"highest\", \"base\": 0, \"offset\": 0}\n문장: 아직 아무 버튼도 건드리지 마\n{\"intent\": \"wait\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}\n문장: 1층은 누르지 말고 좀 기다려 봐\n{\"intent\": \"wait\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}\n문장: 아까 5층 눌렀던가?\n{\"intent\": \"not_command\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}\n문장: 문이 열리면 그때 2층 눌러\n{\"intent\": \"not_command\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}\n문장: 식당이 몇 층에 있는지 알아?\n{\"intent\": \"not_command\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}\n문장: 4층이나 5층 중 아무거나 하나 눌러\n{\"intent\": \"unclear\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}\n문장: 층 버튼 하나 눌러 줘\n{\"intent\": \"unclear\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}<|im_end|>\n<|im_start|>user\n3층 버튼을 눌러줘<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+  "token_check_A": {
+    "n_tokens": 701,
+    "add_bos_token": true,
+    "template_uses_bos_token": false,
+    "bos_id": 128000,
+    "bos_text": "<|begin_of_text|>",
+    "bos_count_in_prompt": 1,
+    "starts_with_double_bos": false,
+    "special_strings": [
+      "</think>",
+      "<think>",
+      "<|im_end|>",
+      "<|im_start|>"
+    ],
+    "special_single_token": {
+      "</think>": true,
+      "<think>": true,
+      "<|im_end|>": true,
+      "<|im_start|>": true
+    },
+    "first10": [
+      [
+        128000,
+        "<|begin_of_text|>"
+      ],
+      [
+        128009,
+        "<|im_start|>"
+      ],
+      [
+        10594,
+        "system"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        42298,
+        "너는"
+      ],
+      [
+        71438,
+        " 엘리베이터"
+      ],
+      [
+        20974,
+        " 안에서"
+      ],
+      [
+        44687,
+        " 휠"
+      ],
+      [
+        1606,
+        "체"
+      ],
+      [
+        75812,
+        "어에"
+      ]
+    ],
+    "last10": [
+      [
+        15635,
+        "줘"
+      ],
+      [
+        128010,
+        "<|im_end|>"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        128009,
+        "<|im_start|>"
+      ],
+      [
+        105309,
+        "assistant"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        128032,
+        "<think>"
+      ],
+      [
+        273,
+        "\n\n"
+      ],
+      [
+        128033,
+        "</think>"
+      ],
+      [
+        273,
+        "\n\n"
+      ]
+    ]
+  },
+  "rendered_B": "<|im_start|>system\n너는 엘리베이터 안에서 휠체어에 달린 로봇팔을 돕는 명령 해석기다. 사용자가 로봇팔에게 한 말 한 문장을 읽고, 지금 엘리베이터 층 버튼을 눌러야 하는지 판단해 JSON 하나만 출력한다. 먼저 reason에 판단 이유를 한 문장으로 쓰고, 그다음 값을 정한다.\n\nintent (하나를 고른다)\n- press_now: 지금 어떤 층 버튼을 누르라는 요청이다. 그 층으로 가자는 말도 포함한다.\n- wait: 누르지 말라는 말, 기다리거나 멈추라는 말이다.\n- not_command: 버튼을 누르라는 요청이 아니다. 질문, 지난 일 이야기, 조건이 붙어 나중에 할 일, 농담, 상관없는 말이 여기에 든다.\n- unclear: 누르라는 요청이지만 어느 층인지 하나로 정할 수 없거나, 무슨 뜻인지 확실하지 않다.\n\nfloor_type (press_now일 때만 의미가 있다. 다른 intent는 none)\n- number: 층을 직접 말했다. base가 그 층이다.\n- highest: 가장 높은 층이다.\n- lowest: 가장 낮은 층이다.\n- relative: 어떤 층에서 몇 층 위나 아래다. base가 기준 층, offset이 차이다(위는 +, 아래는 -).\n- none: 층이 없다.\n쓰지 않는 base와 offset은 0으로 둔다.\n\n예시\n문장: 5층 버튼 한 번 눌러 줄 수 있어?\n{\"reason\": \"5층을 지금 눌러 달라는 부탁이다.\", \"intent\": \"press_now\", \"floor_type\": \"number\", \"base\": 5, \"offset\": 0}\n문장: 2층 말고 6층으로 부탁해요\n{\"reason\": \"2층은 취소하고 6층을 원한다.\", \"intent\": \"press_now\", \"floor_type\": \"number\", \"base\": 6, \"offset\": 0}\n문장: 제일 아래층으로 내려가 줘\n{\"reason\": \"가장 낮은 층으로 가자는 요청이다.\", \"intent\": \"press_now\", \"floor_type\": \"lowest\", \"base\": 0, \"offset\": 0}\n문장: 3층에서 두 층 더 올라간 층 눌러\n{\"reason\": \"3층보다 두 층 위를 누르라는 요청이다.\", \"intent\": \"press_now\", \"floor_type\": \"relative\", \"base\": 3, \"offset\": 2}\n문장: 가장 위에 있는 버튼 눌러 줄래\n{\"reason\": \"가장 높은 층 버튼을 누르라는 요청이다.\", \"intent\": \"press_now\", \"floor_type\": \"highest\", \"base\": 0, \"offset\": 0}\n문장: 아직 아무 버튼도 건드리지 마\n{\"reason\": \"버튼을 누르지 말라는 말이다.\", \"intent\": \"wait\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}\n문장: 1층은 누르지 말고 좀 기다려 봐\n{\"reason\": \"누르지 말고 기다리라는 말이다.\", \"intent\": \"wait\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}\n문장: 아까 5층 눌렀던가?\n{\"reason\": \"지난 일을 묻는 질문이다.\", \"intent\": \"not_command\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}\n문장: 문이 열리면 그때 2층 눌러\n{\"reason\": \"조건이 붙은 나중의 일이라 지금 누를 명령이 아니다.\", \"intent\": \"not_command\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}\n문장: 식당이 몇 층에 있는지 알아?\n{\"reason\": \"버튼과 상관없는 질문이다.\", \"intent\": \"not_command\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}\n문장: 4층이나 5층 중 아무거나 하나 눌러\n{\"reason\": \"누를 층이 하나로 정해지지 않는다.\", \"intent\": \"unclear\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}\n문장: 층 버튼 하나 눌러 줘\n{\"reason\": \"누르라고 했지만 층이 없다.\", \"intent\": \"unclear\", \"floor_type\": \"none\", \"base\": 0, \"offset\": 0}<|im_end|>\n<|im_start|>user\n3층 버튼을 눌러줘<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+  "token_check_B": {
+    "n_tokens": 865,
+    "add_bos_token": true,
+    "template_uses_bos_token": false,
+    "bos_id": 128000,
+    "bos_text": "<|begin_of_text|>",
+    "bos_count_in_prompt": 1,
+    "starts_with_double_bos": false,
+    "special_strings": [
+      "</think>",
+      "<think>",
+      "<|im_end|>",
+      "<|im_start|>"
+    ],
+    "special_single_token": {
+      "</think>": true,
+      "<think>": true,
+      "<|im_end|>": true,
+      "<|im_start|>": true
+    },
+    "first10": [
+      [
+        128000,
+        "<|begin_of_text|>"
+      ],
+      [
+        128009,
+        "<|im_start|>"
+      ],
+      [
+        10594,
+        "system"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        42298,
+        "너는"
+      ],
+      [
+        71438,
+        " 엘리베이터"
+      ],
+      [
+        20974,
+        " 안에서"
+      ],
+      [
+        44687,
+        " 휠"
+      ],
+      [
+        1606,
+        "체"
+      ],
+      [
+        75812,
+        "어에"
+      ]
+    ],
+    "last10": [
+      [
+        15635,
+        "줘"
+      ],
+      [
+        128010,
+        "<|im_end|>"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        128009,
+        "<|im_start|>"
+      ],
+      [
+        105309,
+        "assistant"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        128032,
+        "<think>"
+      ],
+      [
+        273,
+        "\n\n"
+      ],
+      [
+        128033,
+        "</think>"
+      ],
+      [
+        273,
+        "\n\n"
+      ]
+    ]
+  },
+  "system_merged_into_user": false
+}

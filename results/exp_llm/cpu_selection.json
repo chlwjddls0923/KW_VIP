@@ -1,0 +1,79 @@
+{
+  "n_pairs_pass123": 0,
+  "chosen": [
+    {
+      "model": "A",
+      "name": "qwen35-4b",
+      "variant": "A",
+      "best_method": "G-floor",
+      "dev": "77/0/1",
+      "adv_dev": "24/0/9",
+      "official_same_as_R": true,
+      "pass123": false,
+      "why": "①~③ 미통과: 위험한 실패 합 최소, 그다음 adv_dev 정답 최대"
+    },
+    {
+      "model": "E",
+      "name": "gemma4-e2b",
+      "variant": "A",
+      "best_method": "G-floor",
+      "dev": "77/0/1",
+      "adv_dev": "24/0/9",
+      "official_same_as_R": true,
+      "pass123": false,
+      "why": "①~③ 미통과: 위험한 실패 합 최소, 그다음 adv_dev 정답 최대"
+    }
+  ],
+  "all_pairs": [
+    {
+      "name": "exaone4-1.2b",
+      "variant": "A",
+      "pass123_methods": []
+    },
+    {
+      "name": "exaone4-1.2b",
+      "variant": "B",
+      "pass123_methods": []
+    },
+    {
+      "name": "gemma4-e2b",
+      "variant": "A",
+      "pass123_methods": []
+    },
+    {
+      "name": "gemma4-e2b",
+      "variant": "B",
+      "pass123_methods": []
+    },
+    {
+      "name": "kanana2-3b",
+      "variant": "A",
+      "pass123_methods": []
+    },
+    {
+      "name": "kanana2-3b",
+      "variant": "B",
+      "pass123_methods": []
+    },
+    {
+      "name": "qwen35-2b",
+      "variant": "A",
+      "pass123_methods": []
+    },
+    {
+      "name": "qwen35-2b",
+      "variant": "B",
+      "pass123_methods": []
+    },
+    {
+      "name": "qwen35-4b",
+      "variant": "A",
+      "pass123_methods": []
+    },
+    {
+      "name": "qwen35-4b",
+      "variant": "B",
+      "pass123_methods": []
+    }
+  ]
+}

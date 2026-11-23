@@ -1,0 +1,280 @@
+{
+  "model": "F",
+  "name": "exaone4-1.2b",
+  "file": "EXAONE-4.0-1.2B-Q4_K_M.gguf",
+  "repo": "LGAI-EXAONE/EXAONE-4.0-1.2B-GGUF",
+  "bytes": 812437792,
+  "llama_cpp_python": "0.3.37",
+  "n_ctx": 4096,
+  "n_threads": 4,
+  "n_threads_batch": 4,
+  "n_gpu_layers": -1,
+  "seed": 0,
+  "temperature": 0.0,
+  "tag": "metal",
+  "variants": [
+    "A",
+    "B"
+  ],
+  "reset_each_call": true,
+  "load_s": 0.728,
+  "architecture": "exaone4",
+  "template_has_enable_thinking": true,
+  "template_len": 5485,
+  "sanity": [
+    {
+      "q": "대한민국의 수도는 어디인가요? 한 문장으로 답해 주세요.",
+      "answer": "대한민국의 수도는 서울입니다.",
+      "finish": "stop",
+      "seconds": 0.398
+    },
+    {
+      "q": "사과는 보통 무슨 색인가요? 한 문장으로 답해 주세요.",
+      "answer": "사과는 주로 빨간색, 노란색, 녹색 등 다양한 색을 띱니다.",
+      "finish": "stop",
+      "seconds": 0.221
+    },
+    {
+      "q": "엘리베이터는 어떤 일을 하는 기계인가요? 한 문장으로 답해 주세요.",
+      "answer": "엘리베이터는 사람과 물건을 수직으로 이동시키는 기계 장치입니다.",
+      "finish": "stop",
+      "seconds": 0.225
+    }
+  ],
+  "timing": {
+    "A": {
+      "n": 138,
+      "first_s": 1.331,
+      "median_s_excl_first": 1.2501,
+      "max_s_excl_first": 1.3652,
+      "total_s": 173.0
+    },
+    "B": {
+      "n": 138,
+      "first_s": 1.742,
+      "median_s_excl_first": 1.7917,
+      "max_s_excl_first": 2.3911,
+      "total_s": 250.4
+    }
+  },
+  "token_check_A": {
+    "n_tokens": 807,
+    "add_bos_token": false,
+    "template_uses_bos_token": false,
+    "bos_id": 1,
+    "bos_text": "[BOS]",
+    "bos_count_in_prompt": "해당 없음(BOS 미사용)",
+    "starts_with_double_bos": false,
+    "special_strings": [
+      "</think>",
+      "<think>",
+      "[|assistant|]",
+      "[|endofturn|]",
+      "[|system|]",
+      "[|user|]"
+    ],
+    "special_single_token": {
+      "</think>": true,
+      "<think>": true,
+      "[|assistant|]": true,
+      "[|endofturn|]": true,
+      "[|system|]": true,
+      "[|user|]": true
+    },
+    "first10": [
+      [
+        357,
+        "[|system|]"
+      ],
+      [
+        560,
+        "\n"
+      ],
+      [
+        2088,
+        "너"
+      ],
+      [
+        657,
+        "는"
+      ],
+      [
+        26040,
+        " 엘리베이터"
+      ],
+      [
+        1084,
+        " 안"
+      ],
+      [
+        41728,
+        "에서"
+      ],
+      [
+        55933,
+        " 휠체어"
+      ],
+      [
+        2373,
+        "에"
+      ],
+      [
+        23417,
+        " 달린"
+      ]
+    ],
+    "last10": [
+      [
+        361,
+        "[|endofturn|]"
+      ],
+      [
+        560,
+        "\n"
+      ],
+      [
+        359,
+        "[|assistant|]"
+      ],
+      [
+        560,
+        "\n"
+      ],
+      [
+        356,
+        "<think>"
+      ],
+      [
+        560,
+        "\n"
+      ],
+      [
+        560,
+        "\n"
+      ],
+      [
+        355,
+        "</think>"
+      ],
+      [
+        560,
+        "\n"
+      ],
+      [
+        560,
+        "\n"
+      ]
+    ]
+  },
+  "system_merged_into_user": false,
+  "token_check_B": {
+    "n_tokens": 1008,
+    "add_bos_token": false,
+    "template_uses_bos_token": false,
+    "bos_id": 1,
+    "bos_text": "[BOS]",
+    "bos_count_in_prompt": "해당 없음(BOS 미사용)",
+    "starts_with_double_bos": false,
+    "special_strings": [
+      "</think>",
+      "<think>",
+      "[|assistant|]",
+      "[|endofturn|]",
+      "[|system|]",
+      "[|user|]"
+    ],
+    "special_single_token": {
+      "</think>": true,
+      "<think>": true,
+      "[|assistant|]": true,
+      "[|endofturn|]": true,
+      "[|system|]": true,
+      "[|user|]": true
+    },
+    "first10": [
+      [
+        357,
+        "[|system|]"
+      ],
+      [
+        560,
+        "\n"
+      ],
+      [
+        2088,
+        "너"
+      ],
+      [
+        657,
+        "는"
+      ],
+      [
+        26040,
+        " 엘리베이터"
+      ],
+      [
+        1084,
+        " 안"
+      ],
+      [
+        41728,
+        "에서"
+      ],
+      [
+        55933,
+        " 휠체어"
+      ],
+      [
+        2373,
+        "에"
+      ],
+      [
+        23417,
+        " 달린"
+      ]
+    ],
+    "last10": [
+      [
+        361,
+        "[|endofturn|]"
+      ],
+      [
+        560,
+        "\n"
+      ],
+      [
+        359,
+        "[|assistant|]"
+      ],
+      [
+        560,
+        "\n"
+      ],
+      [
+        356,
+        "<think>"
+      ],
+      [
+        560,
+        "\n"
+      ],
+      [
+        560,
+        "\n"
+      ],
+      [
+        355,
+        "</think>"
+      ],
+      [
+        560,
+        "\n"
+      ],
+      [
+        560,
+        "\n"
+      ]
+    ]
+  },
+  "peak_rss_mb": 1194.1
+}

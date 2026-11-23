@@ -1,0 +1,274 @@
+{
+  "model": "C",
+  "name": "kanana2-3b",
+  "file": "kanana-2-3b-instruct.Q4_K_M.gguf",
+  "repo": "mradermacher/kanana-2-3b-instruct-GGUF",
+  "bytes": 2161793920,
+  "llama_cpp_python": "0.3.37",
+  "n_ctx": 4096,
+  "n_threads": 4,
+  "n_threads_batch": 4,
+  "n_gpu_layers": -1,
+  "seed": 0,
+  "temperature": 0.0,
+  "tag": "metal",
+  "variants": [
+    "A",
+    "B"
+  ],
+  "reset_each_call": true,
+  "template_file": "experiments/llm/templates/kanana_fixed.jinja",
+  "template_sha256": "66baa0b9682817fefe6ad3d01e13470380e0d5f9ccb46664aa773b34a9acedbd",
+  "load_s": 0.258,
+  "architecture": "qwen3",
+  "template_has_enable_thinking": false,
+  "template_len": 10686,
+  "sanity": [
+    {
+      "q": "대한민국의 수도는 어디인가요? 한 문장으로 답해 주세요.",
+      "answer": "서울",
+      "finish": "stop",
+      "seconds": 0.109
+    },
+    {
+      "q": "사과는 보통 무슨 색인가요? 한 문장으로 답해 주세요.",
+      "answer": "빨간색입니다.",
+      "finish": "stop",
+      "seconds": 0.166
+    },
+    {
+      "q": "엘리베이터는 어떤 일을 하는 기계인가요? 한 문장으로 답해 주세요.",
+      "answer": "엘리베이터는 사람이나 물건을 높은 곳이나 낮은 곳으로 이동시키는 기계입니다.",
+      "finish": "stop",
+      "seconds": 0.419
+    }
+  ],
+  "timing": {
+    "A": {
+      "n": 138,
+      "first_s": 2.346,
+      "median_s_excl_first": 2.3274,
+      "max_s_excl_first": 2.3986,
+      "total_s": 320.4
+    },
+    "B": {
+      "n": 138,
+      "first_s": 3.185,
+      "median_s_excl_first": 3.1303,
+      "max_s_excl_first": 3.374,
+      "total_s": 431.9
+    }
+  },
+  "token_check_A": {
+    "n_tokens": 701,
+    "add_bos_token": true,
+    "template_uses_bos_token": false,
+    "bos_id": 128000,
+    "bos_text": "<|begin_of_text|>",
+    "bos_count_in_prompt": 1,
+    "starts_with_double_bos": false,
+    "special_strings": [
+      "</think>",
+      "<think>",
+      "<|im_end|>",
+      "<|im_start|>"
+    ],
+    "special_single_token": {
+      "</think>": true,
+      "<think>": true,
+      "<|im_end|>": true,
+      "<|im_start|>": true
+    },
+    "first10": [
+      [
+        128000,
+        "<|begin_of_text|>"
+      ],
+      [
+        128009,
+        "<|im_start|>"
+      ],
+      [
+        10594,
+        "system"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        42298,
+        "너는"
+      ],
+      [
+        71438,
+        " 엘리베이터"
+      ],
+      [
+        20974,
+        " 안에서"
+      ],
+      [
+        44687,
+        " 휠"
+      ],
+      [
+        1606,
+        "체"
+      ],
+      [
+        75812,
+        "어에"
+      ]
+    ],
+    "last10": [
+      [
+        15635,
+        "줘"
+      ],
+      [
+        128010,
+        "<|im_end|>"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        128009,
+        "<|im_start|>"
+      ],
+      [
+        105309,
+        "assistant"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        128032,
+        "<think>"
+      ],
+      [
+        273,
+        "\n\n"
+      ],
+      [
+        128033,
+        "</think>"
+      ],
+      [
+        273,
+        "\n\n"
+      ]
+    ]
+  },
+  "system_merged_into_user": false,
+  "token_check_B": {
+    "n_tokens": 865,
+    "add_bos_token": true,
+    "template_uses_bos_token": false,
+    "bos_id": 128000,
+    "bos_text": "<|begin_of_text|>",
+    "bos_count_in_prompt": 1,
+    "starts_with_double_bos": false,
+    "special_strings": [
+      "</think>",
+      "<think>",
+      "<|im_end|>",
+      "<|im_start|>"
+    ],
+    "special_single_token": {
+      "</think>": true,
+      "<think>": true,
+      "<|im_end|>": true,
+      "<|im_start|>": true
+    },
+    "first10": [
+      [
+        128000,
+        "<|begin_of_text|>"
+      ],
+      [
+        128009,
+        "<|im_start|>"
+      ],
+      [
+        10594,
+        "system"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        42298,
+        "너는"
+      ],
+      [
+        71438,
+        " 엘리베이터"
+      ],
+      [
+        20974,
+        " 안에서"
+      ],
+      [
+        44687,
+        " 휠"
+      ],
+      [
+        1606,
+        "체"
+      ],
+      [
+        75812,
+        "어에"
+      ]
+    ],
+    "last10": [
+      [
+        15635,
+        "줘"
+      ],
+      [
+        128010,
+        "<|im_end|>"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        128009,
+        "<|im_start|>"
+      ],
+      [
+        105309,
+        "assistant"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        128032,
+        "<think>"
+      ],
+      [
+        273,
+        "\n\n"
+      ],
+      [
+        128033,
+        "</think>"
+      ],
+      [
+        273,
+        "\n\n"
+      ]
+    ]
+  },
+  "peak_rss_mb": 2804.1
+}

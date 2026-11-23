@@ -1,0 +1,159 @@
+{
+  "model": "A",
+  "name": "qwen35-4b",
+  "file": "Qwen_Qwen3.5-4B-Q4_K_M.gguf",
+  "repo": "bartowski/Qwen_Qwen3.5-4B-GGUF",
+  "bytes": 3013027808,
+  "llama_cpp_python": "0.3.37",
+  "n_ctx": 4096,
+  "n_threads": 4,
+  "n_threads_batch": 4,
+  "n_gpu_layers": 0,
+  "seed": 0,
+  "temperature": 0.0,
+  "tag": "cpu1_A",
+  "variants": [
+    "A"
+  ],
+  "reset_each_call": true,
+  "load_s": 3.742,
+  "architecture": "qwen35",
+  "template_has_enable_thinking": true,
+  "template_len": 7756,
+  "sanity": [
+    {
+      "q": "대한민국의 수도는 어디인가요? 한 문장으로 답해 주세요.",
+      "answer": "대한민국의 수도는 서울특별시입니다.",
+      "finish": "stop",
+      "seconds": 1.293
+    },
+    {
+      "q": "사과는 보통 무슨 색인가요? 한 문장으로 답해 주세요.",
+      "answer": "사과는 품종에 따라 빨강, 노랑, 초록 등 다양한 색을 띠지만, 가장 일반적으로 볼 수 있는 색은 붉은색입니다.",
+      "finish": "stop",
+      "seconds": 1.938
+    },
+    {
+      "q": "엘리베이터는 어떤 일을 하는 기계인가요? 한 문장으로 답해 주세요.",
+      "answer": "엘리베이터는 건물의 여러 층 사이를 사람이 탑승하여 승강할 수 있도록 수직으로 이동시키는 기계입니다.",
+      "finish": "stop",
+      "seconds": 1.571
+    }
+  ],
+  "timing": {
+    "A": {
+      "n": 138,
+      "first_s": 10.311,
+      "median_s_excl_first": 9.7884,
+      "max_s_excl_first": 12.1105,
+      "total_s": 1369.7
+    }
+  },
+  "token_check_A": {
+    "n_tokens": 772,
+    "add_bos_token": false,
+    "template_uses_bos_token": false,
+    "bos_id": 11,
+    "bos_text": ",",
+    "bos_count_in_prompt": "해당 없음(BOS 미사용)",
+    "starts_with_double_bos": false,
+    "special_strings": [
+      "</think>",
+      "<think>",
+      "<|im_end|>",
+      "<|im_start|>"
+    ],
+    "special_single_token": {
+      "</think>": true,
+      "<think>": true,
+      "<|im_end|>": true,
+      "<|im_start|>": true
+    },
+    "first10": [
+      [
+        248045,
+        "<|im_start|>"
+      ],
+      [
+        8678,
+        "system"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        150208,
+        "너"
+      ],
+      [
+        16072,
+        "는"
+      ],
+      [
+        218154,
+        " 엘리"
+      ],
+      [
+        244763,
+        "베이터"
+      ],
+      [
+        224723,
+        " 안에서"
+      ],
+      [
+        222401,
+        " 휠"
+      ],
+      [
+        47878,
+        "체"
+      ]
+    ],
+    "last10": [
+      [
+        169494,
+        "줘"
+      ],
+      [
+        248046,
+        "<|im_end|>"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        248045,
+        "<|im_start|>"
+      ],
+      [
+        74455,
+        "assistant"
+      ],
+      [
+        198,
+        "\n"
+      ],
+      [
+        248068,
+        "<think>"
+      ],
+      [
+        271,
+        "\n\n"
+      ],
+      [
+        248069,
+        "</think>"
+      ],
+      [
+        271,
+        "\n\n"
+      ]
+    ]
+  },
+  "system_merged_into_user": false,
+  "peak_rss_mb": 5742.8
+}

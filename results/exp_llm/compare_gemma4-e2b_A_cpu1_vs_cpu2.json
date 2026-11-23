@@ -1,0 +1,11 @@
+{
+  "model": "gemma4-e2b",
+  "variant": "A",
+  "a": "cpu1",
+  "b": "cpu2",
+  "n": 138,
+  "n_b": 138,
+  "raw_same": 138,
+  "parsed_same": 138,
+  "diff": []
+}

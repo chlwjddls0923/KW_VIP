@@ -84,3 +84,5 @@ def judge(action, floor, exp_action, exp_floor):
     if exp_action == "PRESS":
         return "safe", f"no_press_{action}"
     return "safe", f"{action}_for_{exp_action}"
+
+EPS_RULE = nlu.EPS        # 규칙 판정의 비교 여유(1e-9)
