@@ -1,0 +1,8 @@
+.venv/
+build/
+out/
+__pycache__/
+.DS_Store
+# 사용자가 단계 6에서 넣는 평가 문장 파일 (커밋하지 않음)
+data/commands_holdout.tsv
+data/commands_team.tsv
