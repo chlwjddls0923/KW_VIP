@@ -22,7 +22,7 @@
 | 1 장면 생성기 | 완료 | test_scene 6/6 |
 | 2 IK와 누르기 | 완료 | test_control 3/3 |
 | 3 인식 | 완료 | test_perception 2/2 |
-| 4 명령 해석 | 대기 | |
+| 4 명령 해석 | 완료 | test_nlu 22/22, dev 78/78 |
 | 5 통합 | 대기 | |
 | 6 평가 | 대기 | |
 | 7 영상과 문서 | 대기 | |
@@ -61,5 +61,16 @@
 - macOS 렌더링 경고: `ARB_clip_control unavailable while mjDEPTH_ZEROFAR requested, depth accuracy will be limited`. 깊이 정밀도가 제한된다는 뜻이지만 위 오차 기준은 통과
 - 숫자 텍스처는 뒤집지 않는다(정면화 패치에서 바로 선 숫자로 보임, `out/perception_debug.png`)
 
+## 뒤 단계에서 할 일 (사용자 지시)
+- 단계 7: `docs/EXPLAIN.md`의 실행 환경에 macOS 깊이 정밀도 경고(`ARB_clip_control unavailable …`)와 단계 3 측정값(중심 오차 중앙값 0.46 mm·최대 1.28 mm, 법선 오차 최대 0.013°)을 적는다.
+
+## 단계 4 기록
+- `nlu.py`: `parse(text)` → {intent, floor, scores, events, floors, candidates, tokens}, `ground(parsed, seen_floors)` → {action, floor, reason('ok'/'not_visible'/'wait'/'clarify'/'unsupported')}, `digits_only(text)`, `get_kiwi()`, `INIT_MS`
+- `data/commands_dev.tsv`: 부록 F 78문장 (PRESS 28, WAIT 24, REJECT 19, CLARIFY 7)
+- dev 78/78, 눌러선 안 되는 문장의 PRESS 0건. `digits_only` dev 22/78
+- 문장당 해석 0.052 ms(중앙값), 최대 0.362 ms. 분석기 초기화(생성 + 첫 tokenize) 838 ms
+- 부록 D 알려진 한계 9문장이 계획서 설명대로 재현됨(`test_known_limits_reproduce`). 고치지 않고 단계 7 EXPLAIN.md에 적는다
+- 규칙은 dev 문장으로만 맞췄다(첫 구현에서 78/78이라 가중치 조정 없음). holdout은 열지 않았다
+
 ## 다음 할 일
-- 단계 4: `src/assist/nlu.py` (부록 D), `data/commands_dev.tsv` (부록 F), `tests/test_nlu.py`
+- 단계 5: `src/assist/protocol.py` (부록 E), `src/assist/pipeline.py`, `scripts/demo.py`, `tests/test_pipeline.py`
