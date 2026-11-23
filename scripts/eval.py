@@ -382,7 +382,21 @@ def cmd_summary(_args):
 
     run1 = S["runs"][off_dirs[0].name]
     if len(off_dirs) > 1:
-        md += ["### run1과 이후 실행", "", "코드를 고친 내용과 이유는 `results/CHANGELOG.md`에 있다. 위에 모든 run을 그대로 적었다.", ""]
+        base_ok = {r["trial_id"]: r["success"] for r in _read_trials(off_dirs[0])}
+        md += [f"## {off_dirs[0].name}과 이후 실행 비교", "",
+               "공식 결과를 본 뒤 고친 내용과 이유는 `results/CHANGELOG.md`에 있다. 위에 모든 run을 그대로 적었다.", "",
+               f"| run | 커밋 | 전체 | 기본 | 변화 | 명령 점검 | {off_dirs[0].name}과 success 열 |", "|---|---|---|---|---|---|---|"]
+        S["run_compare"] = {}
+        for d in off_dirs:
+            sec = S["runs"][d.name]
+            ok = {r["trial_id"]: r["success"] for r in _read_trials(d)}
+            diff = [k for k in base_ok if base_ok.get(k) != ok.get(k)] + [k for k in ok if k not in base_ok]
+            S["run_compare"][d.name] = {"success_equal": not diff, "diff_ids": diff}
+            same = f"같음 ({len(base_ok)}/{len(base_ok)} 일치)" if not diff else f"다름: {', '.join(diff)}"
+            md.append(f"| {d.name} | {sec['git_commit']} | {sec['all']['k']}/{sec['all']['n']} | {sec['basic']['k']}/{sec['basic']['n']} | "
+                      f"{sec['variation']['k']}/{sec['variation']['n']} | {sec['checks']['k']}/{sec['checks']['n']} | "
+                      f"{'기준' if d == off_dirs[0] else same} |")
+        md += [""]
 
     # 재현 확인
     if rerun_rows is not None:
