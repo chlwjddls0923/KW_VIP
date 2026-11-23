@@ -53,6 +53,11 @@ R의 위험한 실패 0건: 없음
 
 **미실시** (`data/commands_adv_test.tsv` 없음).
 
+파일이 들어오면 정해 둔 절차(사용자 지시 2026-11-24): 동결 상태(44f25b5) 그대로 adv_test만 한 번 실행한다.
+1. `step4_adv_test.py freeze`: 동결 파일·모델의 sha256이 `step4_freeze.json`과 같은지 확인하고, adv_test의 sha256을 `step4_adv_test_freeze.json`에 적는다. 이 파일을 커밋한다.
+2. `step4_adv_test.py run`: 모델을 한 번 실행한다. 결과는 `step4_adv_test/`에 쓴다.
+3. `step4_adv_test.py report`: 저장한 출력으로 결합·채점한 뒤, 그 내용을 이 절에 옮긴다.
+
 ## 자원
 
 - 로드 1.301 s, 최대 메모리(RSS) 3944.9 MB
