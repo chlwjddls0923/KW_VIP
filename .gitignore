@@ -7,3 +7,4 @@ __pycache__/
 data/commands_holdout.tsv
 data/commands_team.tsv
 .pytest_cache/
+MUJOCO_LOG.TXT

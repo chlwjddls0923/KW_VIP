@@ -23,7 +23,7 @@
 | 2 IK와 누르기 | 완료 | test_control 3/3 |
 | 3 인식 | 완료 | test_perception 2/2 |
 | 4 명령 해석 | 완료 | test_nlu 22/22, dev 78/78 |
-| 5 통합 | 대기 | |
+| 5 통합 | 완료 | test_pipeline 3/3, dev 시드 20/20 |
 | 6 평가 | 대기 | |
 | 7 영상과 문서 | 대기 | |
 
@@ -72,5 +72,15 @@
 - 부록 D 알려진 한계 9문장이 계획서 설명대로 재현됨(`test_known_limits_reproduce`). 고치지 않고 단계 7 EXPLAIN.md에 적는다
 - 규칙은 dev 문장으로만 맞췄다(첫 구현에서 78/78이라 가중치 조정 없음). holdout은 열지 않았다
 
+## 단계 5 기록
+- `protocol.py`: `Trial`, `basic_trial`, `variation_trial`(부록 E 추출 순서 그대로), `check_trials`, `official_trials`, `baseline_trials`(FB/FV), `supplementary_trials`, `dev_trials`, `judge(trial, rec)`, `wilson`, 실패 유형 상수·한국어 이름
+- `pipeline.py`: `Assistant(scene, mode='full'|'baseline_fixed', say)`.`run(text)`, `SceneCache`, `run_trial(trial, cache)` → trials.csv 한 줄, `CSV_COLUMNS`
+- 움직이지 않는 판단(WAIT·CLARIFY·REJECT·층 없음·IK 불가) 뒤에도 1초 진행해 정지 상태를 기록한다(`STILL_HOLD_S`)
+- 기준선 `baseline_fixed`는 인식 없이 보이는 층 = 1~6, 라벨 중심 = (0.43, −0.87, 0.99) + (x, 0.081, z), 법선 (0, 1, 0)
+- 명령 8종 8/8, 움직이면 안 되는 명령 관절 최대 변화 0 rad(표시 자릿수 기준)
+- 버튼 1개 장면: '3층 눌러줘' 15.3 mm 성공, '4층 눌러줘' 거부(관절 8.9e−8 rad)
+- 개발용 시드 5001~5020: 20/20 (목표 높이 0.877, 0.882 m인 D15, D02도 성공). t_press 5.39~5.58 s, t_task 9.86~9.88 s, 인식 102~110 ms
+- `scripts/demo.py --text … [--seed N]`, 인자 없으면 입력받기
+
 ## 다음 할 일
-- 단계 5: `src/assist/protocol.py` (부록 E), `src/assist/pipeline.py`, `scripts/demo.py`, `tests/test_pipeline.py`
+- 단계 6: 시작 전에 `data/commands_holdout.tsv` 확인(없으면 사용자에게 요청). `data/eval_protocol.json` 작성·커밋 → `scripts/eval.py`, `scripts/sysinfo.py`
