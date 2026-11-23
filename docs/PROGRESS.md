@@ -20,7 +20,7 @@
 |---|---|---|
 | 0 환경과 모델 확인 | 완료 | check_env OK, test_model_facts 6/6 |
 | 1 장면 생성기 | 완료 | test_scene 6/6 |
-| 2 IK와 누르기 | 대기 | |
+| 2 IK와 누르기 | 완료 | test_control 3/3 |
 | 3 인식 | 대기 | |
 | 4 명령 해석 | 대기 | |
 | 5 통합 | 대기 | |
@@ -43,5 +43,14 @@
 - 대기 1.2초: slide 최대 0 mm, 관절 변화 최대 9.3e−8 rad
 - `layout_string(layout)`: P1~P6에 놓인 층 문자열(평가 기록용)
 
+## 단계 2 기록
+- `ik.py`: `IK(model).solve(p_des, z_des, q_seed, max_nfev=200)` → (q, 위치 오차 m, 방향 오차 도). FK 전용 MjData를 따로 쓴다. `Q_READY` 상수
+- `motion.py`: `Controller(model, data)`. `tick/hold/move_joint/move_line`, `plan_press(center, normal)`(접근·누름 IK, 1 mm 넘으면 ok=False), `execute_press(plan, q_home)`, `press(...)`. `step_hooks`(mj_step마다, 채점 신호), `tick_hooks`(0.02초마다, 영상·거리). reset 뒤 `sync()` 필수
+- IK 600개(시드 8001~8100 × 6): 위치 오차 최대 0.0013 mm, 기울기 중앙값 5.3°·최대 37.4°, 접근 IK 1.5~17.6 ms(중앙값 5.1)
+- 누르기 20회(시드 6001~6020): 20/20, 목표 14.85~15.43 mm, 다른 버튼 0 mm
+- 팔 링크(link2~8)–환경 최소 거리: 패널 27.5 mm, 다른 버튼 31.5 mm 이상, 오른쪽 팔걸이 87.2 mm, 등받이 71.4 mm (거리 계산 상한 200 mm)
+- 원본 XML, ee_site → button_target(z_des (0,−1,0)) 1초 유지: button_3_slide 최대 0 mm
+- 참고 측정: 원본 버튼 앞 10 cm 최소 기울기 약 11°(joint5가 한계 1.19에 닿음)
+
 ## 다음 할 일
-- 단계 2: `src/assist/ik.py`, `src/assist/motion.py` (부록 C), `tests/test_control.py`
+- 단계 3: `src/assist/camera.py`, `src/assist/perception.py` (부록 B), `tests/test_perception.py`
