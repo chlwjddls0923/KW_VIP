@@ -6,7 +6,7 @@
 - 실행 PC: Mac mini (Apple M4, 16 GB, 10코어), macOS 26.7.1, GPU 없음
 - Python 3.11.13, 가상환경 `.venv` (Homebrew python3.11로 생성. 3.14는 쓰지 않음)
 - 성공 기준 변위 10 mm. 팀명·팀원 [ ], 발표·제출일 [ ]
-- macOS: MUJOCO_GL 설정 안 함, viewer 쓰지 않음, git push·원격 설정 안 함
+- macOS: MUJOCO_GL 설정 안 함, viewer 쓰지 않음. 원격 설정은 바꾸지 않음. push는 사용자가 지시한 조건에서만 한다(원격 origin = GitHub 공개 저장소, 2026-11-24 확인)
 - `data/commands_holdout.tsv`, `data/commands_team.tsv`는 사용자가 단계 6에 넣는다. 그 전에는 찾거나 만들지 않는다. `.gitignore`에 들어 있다.
 
 ## 계획과 다르게 한 것 (사용자 승인, 유지)
@@ -105,5 +105,25 @@
 - README의 데모 명령 5개를 그대로 실행해 확인. pytest 42/42
 - 추가로 확인한 한계(규칙은 고치지 않음): '기다렸다가 3층 눌러' → PRESS(3) 즉시 누름
 
+## 단계 7 이후 (2026-11-24)
+- **LLM 실험** (`exp/llm-fallback`, 본 시스템에 연결 안 함)
+  - 1~4단계 완료. 고른 조합은 gemma4-e2b·A·G-floor(CPU)다.
+  - holdout 결과는 R과 같은 29/0/1이고, 모델 때문에 바뀐 문장은 0이다. adv_test는 미실시.
+  - 요약: 그 브랜치의 `experiments/llm/REPORT.md`
+- **SV024 재확인**(main 2ec00b8, 문서 2ba9361)
+  - 원인은 팔 베이스 link1이 버튼 고리 아래를 일부 가린 것이다. 고리가 끊겨 라벨 픽셀이 25 px에 못 미쳤다.
+  - SV060·SV094의 5층 미검출도 같은 원인이다. 화면 경계 문제가 아니다(`results/diag/SV024.md`).
+  - `results/summary.md`는 `eval.py summary`가 다시 만드는 파일이라 고치지 않았다(사용자 결정).
+- **깨끗한 복제본 재현**(macOS): pytest 42개, 명령 점검 5문장, dev 78/78이 원본과 같았다(`docs/OVERNIGHT_REPORT.md` 작업 1).
+- **팀원 안내** `docs/TEAM_SETUP.md`, **발표 재료** `docs/PRESENTATION_NOTES.md`(그림 `docs/figures/`)
+- 야간 작업 기록: `docs/OVERNIGHT_REPORT.md`
+
 ## 다음 할 일
-- 전체 완료. 사람이 확인할 것: 영상(results/video/), 숫자 방향(out/scene_head.png, out/perception_debug.png), 발표에 밝힐 모델 수정(docs/MODEL_CHANGES.md), 팀명·팀원·발표일 [대괄호]
+- **adv_test 수집과 실행**
+  - 팀원이 적대적 문장을 해석 규칙을 보지 않고 쓴다. 열은 text, expected_action, expected_floor, type, debatable이다.
+  - 문장이 모이면 `exp/llm-fallback`에서 `experiments/llm/step4_adv_test.py freeze → run → report`로 한 번만 실행한다.
+- **팀원 PC 확인**
+  - `docs/TEAM_SETUP.md` 4절 명령을 팀원 PC(특히 Windows, [미확인])에서 실행하고 결과로 안내서 표를 갱신한다.
+- **발표**
+  - `docs/PRESENTATION_NOTES.md`를 바탕으로 슬라이드를 만든다(PPT는 아직 없음). 팀명·팀원·발표일 [대괄호].
+- **사람이 확인할 것**: 영상(results/video/), 숫자 방향(out/scene_head.png, out/perception_debug.png), 발표에 밝힐 모델 수정(docs/MODEL_CHANGES.md)

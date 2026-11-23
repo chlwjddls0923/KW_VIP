@@ -1,6 +1,22 @@
 # 야간 작업 보고 (2026-11-24, 03:32~)
 
-> 요약 표와 '내가 정해야 할 것'은 작업 5에서 이 위에 채운다.
+## 요약 (작업 5 시점, 03:40. 작업 7~9·6 뒤에 갱신)
+
+| 작업 | 상태 | 커밋 (브랜치) | push |
+|---|---|---|---|
+| 0 원격 확인과 push | 완료 | 255fd06 (main) | main: 이미 같음(Everything up-to-date). exp/llm-fallback: 66f1017..201ed5b push함 |
+| 1 깨끗한 복제본 재현 | 완료. pytest 42 passed, 명령 점검 5/5, dev 78/78이 원본과 같음, README 수정 없음 | a40fda7 (main) | 작업 6에서 |
+| 2 팀원 PC 안내서 | 완료 (Windows는 [미확인]) | f4cd6ce (main), 166c763 (exp/llm-fallback) | 작업 6에서 |
+| 3 발표 재료 | 완료 (그림 2장, pillow) | 6c10560 (main) | 작업 6에서 |
+| 4 LLM 실험 보고서 | 완료 | ba83cde (exp/llm-fallback) | 작업 6에서 |
+| 5 정리 (PROGRESS.md, 이 요약) | 완료 | (이 커밋) | 작업 6에서 |
+
+## 내가 정해야 할 것 (작업 5 시점)
+1. **원격 push의 주체:** 03:31:55 main push(2ba9361)와 00:46 push는 이 세션이 한 것이 아니다. 누가 했는지 확인 필요.
+2. **저장소 공개:** GitHub 저장소가 공개(public)다. holdout 문장·결과도 올라가 있다. 비공개로 둘지 정한다.
+3. **팀원 PC(Windows) 확인:** `docs/TEAM_SETUP.md`의 [미확인] 항목을 실제로 확인할 사람과 시점.
+4. **adv_test:** 팀원 적대적 문장 수집 방법(규칙을 보지 않고 쓰기)과 목표 문장 수.
+5. **발표:** 팀명·팀원·발표일 [대괄호]. PRESENTATION_NOTES의 실제 로봇 계획 [미정].
 
 ## 지시 해석
 - 지시문의 '작업 2의 /tmp 복제본'과 '작업 2의 임시 가상환경'은 복제본을 만드는 **작업 1**을 가리키는 것으로 보았다.
@@ -82,3 +98,16 @@ README의 명령을 그대로 실행했다.
 - 그림 `docs/figures/`
   - `success_bar.png`: matplotlib이 없어(설치 금지) pillow로 그렸다. 스크립트 `experiments/figures/make_success_bar.py`, 수치는 trials.csv에서 셈: 20/20 vs 6/20, 10/10 vs 6/10, 10/10 vs 0/10.
   - `sv024_link1_occlusion.png`: `results/diag/SV024_zoom_raw.png`를 복사했다.
+
+## 작업 4. LLM 실험 보고서 (03:38~03:39)
+- exp/llm-fallback `experiments/llm/REPORT.md` (커밋 ba83cde)
+  - 목적, 3단계 후보 표, 고른 조합과 이유, 4단계 결과를 적었다.
+  - 알게 된 것: 병목은 게이트, 모델 단독 위험 사례, Metal·CPU 차이, kanana 템플릿.
+  - 한계: adv_dev는 낙관적, adv_test 미실시. adv_test를 넣으면 실행할 명령(freeze → run → report)도 적었다.
+- 수치는 `results/exp_llm/summary.md`, `step4.md`, `combos*.csv`에서 옮겼다. 'G-model dev 위험 2~6건'은 combos.csv에서 최소·최대를 다시 확인했다.
+
+## 작업 5. 정리 (03:40)
+- `docs/PROGRESS.md`
+  - 고정 사항의 'git push·원격 설정 안 함'을 지금 운영(원격 설정 변경 없음, push는 사용자 지시 조건에서만)에 맞게 고쳤다.
+  - '단계 7 이후' 절을 추가하고 '다음 할 일'을 갱신했다: adv_test 수집·실행, 팀원 PC 확인, 발표.
+- 이 파일 맨 위에 요약 표와 '내가 정해야 할 것'을 넣었다.
