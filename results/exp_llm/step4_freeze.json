@@ -1,0 +1,44 @@
+{
+  "time": "2026-11-24 03:09:29",
+  "commit": "31724dce9679ee4344a85c6d5376dae2a6d05db4",
+  "uncommitted_at_freeze": [
+    "?? experiments/llm/step4.py"
+  ],
+  "combo": {
+    "model": "gemma4-e2b",
+    "key": "E",
+    "variant": "A",
+    "method": "G-floor"
+  },
+  "tau": 0.5,
+  "n_ctx": 4096,
+  "n_threads": 4,
+  "n_threads_batch": 4,
+  "n_gpu_layers": 0,
+  "seed": 0,
+  "temperature": 0.0,
+  "top_k": 1,
+  "max_tokens": 96,
+  "model_file": "google_gemma-4-E2B-it-Q4_K_M.gguf",
+  "model_repo": "bartowski/google_gemma-4-E2B-it-GGUF",
+  "model_rev": "81012ba353",
+  "model_sha256_expected": "923c4c86177d2ee173a7f5b4fa3d0ac65f5962ab15e6d6a5bc250aec4fd7bf7e",
+  "model_sha256_local": "923c4c86177d2ee173a7f5b4fa3d0ac65f5962ab15e6d6a5bc250aec4fd7bf7e",
+  "files_sha256": {
+    "src/assist/nlu.py": "7cea5879a6218f3a7083038cec2ccc04048c6cb31226ad944c0a85861c39d06f",
+    "experiments/llm/gate.py": "84b352cf44fc9131a1a6e538e3dc7d8a17a0c0e9a415c41c77a507004ef38d90",
+    "experiments/llm/combine.py": "6deee3b5f0cdc33f21aa05df35874736ff0a2ded056f02eae43cfc0447361a8b",
+    "experiments/llm/common.py": "8887575342b03bb9ab45a9870f12ddb7e32dfdeb7693e19d958b374c9e871b02",
+    "experiments/llm/run_model.py": "3f271f53c99434835d4767a120811ce3547ba901ba21db1f00044c631c29fd4a",
+    "experiments/llm/models.py": "5ba988f960b097ca1a71f9cb75d2810f42a8ddac22af93db5f807f933219a9c4",
+    "experiments/llm/step4.py": "4e12e059e68b207679c555821c3cb0c25ea1270117dfb7d78ef8720daa375bbb",
+    "data/commands_holdout.tsv": "8b16622236e61175952c5051d1c33dc799e56036976c9d9037880d577de87ba3",
+    "experiments/llm/prompts/system_A.txt": "b189748247ca789152146379ab049e7d8f7ae0d98c13051b50791b3940b568dc",
+    "experiments/llm/prompts/system_B.txt": "eda932e60d4cb9a3b1aeada8c4fcd6b7f45778086cd977b54a15831de0590faf",
+    "experiments/llm/templates/kanana_fixed.diff": "7cfd733fd4497249afbfcccb2384aef3f7c213911c2ac9120809cb0818e0f78b",
+    "experiments/llm/templates/kanana_fixed.jinja": "66baa0b9682817fefe6ad3d01e13470380e0d5f9ccb46664aa773b34a9acedbd",
+    "experiments/llm/templates/kanana_original.jinja": "b8ee6b31575eada17ebbe73d3f1ac65d3efde64f0a25ff922031dec7e1cae3e3"
+  },
+  "adv_test": "없음(미실시)",
+  "model_sha256_match": true
+}
