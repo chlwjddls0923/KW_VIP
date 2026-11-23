@@ -1,0 +1,434 @@
+{
+  "trial": {
+    "trial_id": "SV024",
+    "set": "supp_variation",
+    "seed": 4024,
+    "text": "엘리베이터 5층을 선택해 줘",
+    "expected_action": "PRESS",
+    "expected_floor": 5,
+    "dpos": [
+      0.002933811820086163,
+      -0.015738509257242152,
+      -0.09475767011720247
+    ],
+    "yaw_deg": 6.1454918907124085,
+    "light": 0.8784443775277422,
+    "perm": [
+      3,
+      4,
+      2,
+      5,
+      1,
+      0
+    ],
+    "template": 1,
+    "layout": "453621"
+  },
+  "focus_floors": [
+    4,
+    5
+  ],
+  "seen_floors": [
+    1,
+    2,
+    3,
+    6
+  ],
+  "detections": [
+    {
+      "floor": 1,
+      "score": 0.907,
+      "margin": 0.224
+    },
+    {
+      "floor": 2,
+      "score": 0.899,
+      "margin": 0.212
+    },
+    {
+      "floor": 3,
+      "score": 0.9,
+      "margin": 0.198
+    },
+    {
+      "floor": 6,
+      "score": 0.917,
+      "margin": 0.097
+    }
+  ],
+  "camera": {
+    "pos": [
+      -0.28,
+      0.0,
+      1.19
+    ],
+    "fovy": 72.0,
+    "size": [
+      1280,
+      960
+    ]
+  },
+  "image_bottom_edge_height_on_label_plane_m": {
+    "4": 0.3898,
+    "5": 0.4417
+  },
+  "video_zoom_inset": {
+    "crop_uv": [
+      440,
+      486,
+      740,
+      726
+    ],
+    "4": {
+      "ring_v_range": [
+        671.8,
+        712.1
+      ],
+      "inside_inset": true,
+      "px_below_inset_bottom": 0.0
+    },
+    "5": {
+      "ring_v_range": [
+        685.1,
+        728.3
+      ],
+      "inside_inset": false,
+      "px_below_inset_bottom": 2.3
+    }
+  },
+  "counterfactual_link1_hidden": {
+    "hidden_geoms": [
+      "(이름 없음) [body link1]"
+    ],
+    "seen_floors": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "detections": [
+      {
+        "floor": 1,
+        "score": 0.907,
+        "margin": 0.224
+      },
+      {
+        "floor": 2,
+        "score": 0.899,
+        "margin": 0.212
+      },
+      {
+        "floor": 3,
+        "score": 0.9,
+        "margin": 0.198
+      },
+      {
+        "floor": 4,
+        "score": 0.916,
+        "margin": 0.241
+      },
+      {
+        "floor": 5,
+        "score": 0.901,
+        "margin": 0.059
+      },
+      {
+        "floor": 6,
+        "score": 0.917,
+        "margin": 0.097
+      }
+    ]
+  },
+  "floors": {
+    "1": {
+      "label_center_z_m": 1.0352,
+      "center": {
+        "u": 626.6,
+        "v": 578.7,
+        "in_frame": true,
+        "label_axis_dist_m": 1.031,
+        "depth_at_pixel_m": 1.0306,
+        "occluded_by_depth": false,
+        "ray_first_geom": "label_1 [body elevator_button_1]",
+        "ray_hit_m": 1.0427,
+        "ray_to_label_m": 1.0427,
+        "ray_blocked": false
+      },
+      "label_face": {
+        "n_points": 81,
+        "in_frame": 81,
+        "out_of_frame": 0,
+        "in_frame_but_occluded": 0,
+        "visible": 81,
+        "blocking_geoms(ray)": [],
+        "v_range": [
+          564.8,
+          592.8
+        ]
+      },
+      "blue_ring": {
+        "n_points": 96,
+        "in_frame": 96,
+        "out_of_frame": 0,
+        "in_frame_but_occluded": 0,
+        "visible": 96,
+        "blocking_geoms(ray)": [],
+        "v_range": [
+          557.3,
+          600.0
+        ]
+      }
+    },
+    "2": {
+      "label_center_z_m": 1.0352,
+      "center": {
+        "u": 555.3,
+        "v": 572.2,
+        "in_frame": true,
+        "label_axis_dist_m": 1.1025,
+        "depth_at_pixel_m": 1.1028,
+        "occluded_by_depth": false,
+        "ray_first_geom": "label_2 [body elevator_button_2]",
+        "ray_hit_m": 1.1221,
+        "ray_to_label_m": 1.1221,
+        "ray_blocked": false
+      },
+      "label_face": {
+        "n_points": 81,
+        "in_frame": 81,
+        "out_of_frame": 0,
+        "in_frame_but_occluded": 0,
+        "visible": 81,
+        "blocking_geoms(ray)": [],
+        "v_range": [
+          559.3,
+          585.4
+        ]
+      },
+      "blue_ring": {
+        "n_points": 96,
+        "in_frame": 96,
+        "out_of_frame": 0,
+        "in_frame_but_occluded": 0,
+        "visible": 96,
+        "blocking_geoms(ray)": [],
+        "v_range": [
+          552.3,
+          592.1
+        ]
+      }
+    },
+    "3": {
+      "label_center_z_m": 0.9352,
+      "center": {
+        "u": 555.3,
+        "v": 632.2,
+        "in_frame": true,
+        "label_axis_dist_m": 1.1025,
+        "depth_at_pixel_m": 1.1028,
+        "occluded_by_depth": false,
+        "ray_first_geom": "label_3 [body elevator_button_3]",
+        "ray_hit_m": 1.1402,
+        "ray_to_label_m": 1.1402,
+        "ray_blocked": false
+      },
+      "label_face": {
+        "n_points": 81,
+        "in_frame": 81,
+        "out_of_frame": 0,
+        "in_frame_but_occluded": 0,
+        "visible": 81,
+        "blocking_geoms(ray)": [],
+        "v_range": [
+          618.7,
+          645.9
+        ]
+      },
+      "blue_ring": {
+        "n_points": 96,
+        "in_frame": 96,
+        "out_of_frame": 0,
+        "in_frame_but_occluded": 0,
+        "visible": 96,
+        "blocking_geoms(ray)": [],
+        "v_range": [
+          612.0,
+          652.1
+        ]
+      }
+    },
+    "4": {
+      "label_center_z_m": 0.8352,
+      "center": {
+        "u": 555.3,
+        "v": 692.1,
+        "in_frame": true,
+        "label_axis_dist_m": 1.1025,
+        "depth_at_pixel_m": 1.1028,
+        "occluded_by_depth": false,
+        "ray_first_geom": "label_4 [body elevator_button_4]",
+        "ray_hit_m": 1.1666,
+        "ray_to_label_m": 1.1666,
+        "ray_blocked": false
+      },
+      "label_face": {
+        "n_points": 81,
+        "in_frame": 81,
+        "out_of_frame": 0,
+        "in_frame_but_occluded": 12,
+        "visible": 69,
+        "blocking_geoms(ray)": [
+          "(이름 없음) [body link1]"
+        ],
+        "v_range": [
+          678.1,
+          706.4
+        ]
+      },
+      "blue_ring": {
+        "n_points": 96,
+        "in_frame": 96,
+        "out_of_frame": 0,
+        "in_frame_but_occluded": 30,
+        "visible": 66,
+        "blocking_geoms(ray)": [
+          "(이름 없음) [body link1]"
+        ],
+        "v_range": [
+          671.8,
+          712.1
+        ]
+      },
+      "stages": {
+        "ring_points_in_frame": 96,
+        "ring_points_blue": 61,
+        "components": [
+          {
+            "comp": 5,
+            "size_px_after_dilation": 1170,
+            "pass_min_blue_px(60)": true,
+            "holes_filled_px": 0,
+            "bbox_uv": [
+              538,
+              666,
+              585,
+              704
+            ],
+            "touches_bottom_edge": false,
+            "touches_side_edge": false,
+            "label_blob_px": 3,
+            "pass_min_label_px(25)": false
+          }
+        ],
+        "dropped_at": "라벨 픽셀(가장 큰 라벨 덩어리 < 25 px)"
+      }
+    },
+    "5": {
+      "label_center_z_m": 0.8352,
+      "center": {
+        "u": 626.6,
+        "v": 706.8,
+        "in_frame": true,
+        "label_axis_dist_m": 1.031,
+        "depth_at_pixel_m": 1.0306,
+        "occluded_by_depth": false,
+        "ray_first_geom": "label_5 [body elevator_button_5]",
+        "ray_hit_m": 1.0905,
+        "ray_to_label_m": 1.0905,
+        "ray_blocked": false
+      },
+      "label_face": {
+        "n_points": 81,
+        "in_frame": 81,
+        "out_of_frame": 0,
+        "in_frame_but_occluded": 33,
+        "visible": 48,
+        "blocking_geoms(ray)": [
+          "(이름 없음) [body link1]"
+        ],
+        "v_range": [
+          691.7,
+          722.3
+        ]
+      },
+      "blue_ring": {
+        "n_points": 96,
+        "in_frame": 96,
+        "out_of_frame": 0,
+        "in_frame_but_occluded": 41,
+        "visible": 55,
+        "blocking_geoms(ray)": [
+          "(이름 없음) [body link1]"
+        ],
+        "v_range": [
+          685.1,
+          728.3
+        ]
+      },
+      "stages": {
+        "ring_points_in_frame": 96,
+        "ring_points_blue": 50,
+        "components": [
+          {
+            "comp": 6,
+            "size_px_after_dilation": 1179,
+            "pass_min_blue_px(60)": true,
+            "holes_filled_px": 0,
+            "bbox_uv": [
+              607,
+              678,
+              657,
+              723
+            ],
+            "touches_bottom_edge": false,
+            "touches_side_edge": false,
+            "label_blob_px": 5,
+            "pass_min_label_px(25)": false
+          }
+        ],
+        "dropped_at": "라벨 픽셀(가장 큰 라벨 덩어리 < 25 px)"
+      }
+    },
+    "6": {
+      "label_center_z_m": 0.9352,
+      "center": {
+        "u": 626.6,
+        "v": 642.8,
+        "in_frame": true,
+        "label_axis_dist_m": 1.031,
+        "depth_at_pixel_m": 1.0306,
+        "occluded_by_depth": false,
+        "ray_first_geom": "label_6 [body elevator_button_6]",
+        "ray_hit_m": 1.0622,
+        "ray_to_label_m": 1.0622,
+        "ray_blocked": false
+      },
+      "label_face": {
+        "n_points": 81,
+        "in_frame": 81,
+        "out_of_frame": 0,
+        "in_frame_but_occluded": 0,
+        "visible": 81,
+        "blocking_geoms(ray)": [],
+        "v_range": [
+          628.2,
+          657.6
+        ]
+      },
+      "blue_ring": {
+        "n_points": 96,
+        "in_frame": 96,
+        "out_of_frame": 0,
+        "in_frame_but_occluded": 0,
+        "visible": 96,
+        "blocking_geoms(ray)": [],
+        "v_range": [
+          621.2,
+          664.1
+        ]
+      }
+    }
+  }
+}
