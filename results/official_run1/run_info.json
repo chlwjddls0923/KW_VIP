@@ -1,0 +1,12 @@
+{
+  "mode": "full",
+  "started": "2026-11-23T14:17:11",
+  "wall_s": 8.5,
+  "git_commit": "9b64b7f",
+  "n_trials": 25,
+  "nlu_init_ms": 846.4832499157637,
+  "argv": [
+    "scripts/eval.py",
+    "official"
+  ]
+}

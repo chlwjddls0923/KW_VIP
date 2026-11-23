@@ -1,0 +1,25 @@
+{
+  "os": "macOS-26.7.1-arm64-arm-64bit",
+  "python": "3.11.13",
+  "machine": "arm64",
+  "cpu": "Apple M4",
+  "cpu_cores_physical": 10,
+  "cpu_cores_logical": 10,
+  "memory_gb": 16.0,
+  "packages": {
+    "mujoco": "4.0.1",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pillow": "13.0.0",
+    "kiwipiepy": "0.24.1",
+    "kiwipiepy_model": "0.24.0",
+    "imageio": "2.38.2",
+    "imageio-ffmpeg": "0.8.1",
+    "psutil": "7.2.2",
+    "pytest": "9.2.0"
+  },
+  "model": "Mac16,10",
+  "macos": "26.7.1",
+  "gpu": "별도 GPU 없음. 칩 내장 GPU: Apple M4",
+  "gpu_use": "해석·인식·IK 계산은 CPU(numpy·scipy)에서 한다. 카메라 영상 생성(MuJoCo 오프스크린 렌더링)은 OS 기본 OpenGL 백엔드를 쓴다."
+}

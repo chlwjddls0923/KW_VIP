@@ -145,17 +145,17 @@ def _run_set(trials, out_dir, mode):
 def cmd_official(args):
     trials = official_trials()
     _check_protocol(trials)
-    _run_set(trials, Path(args.out) if args.out else DEFAULT_OUT["official"], "full")
+    _run_set(trials, Path(args.out).resolve() if args.out else DEFAULT_OUT["official"], "full")
 
 
 def cmd_baseline(args):
     trials = baseline_trials()
     _check_protocol(trials)
-    _run_set(trials, Path(args.out) if args.out else DEFAULT_OUT["baseline"], "baseline_fixed")
+    _run_set(trials, Path(args.out).resolve() if args.out else DEFAULT_OUT["baseline"], "baseline_fixed")
 
 
 def cmd_supplementary(args):
-    _run_set(supplementary_trials(), Path(args.out) if args.out else DEFAULT_OUT["supplementary"], "full")
+    _run_set(supplementary_trials(), Path(args.out).resolve() if args.out else DEFAULT_OUT["supplementary"], "full")
 
 
 # ---------------- 해석 평가 ----------------
@@ -250,8 +250,14 @@ def _rate(rows):
     return {"k": k, "n": n, "rate": k / n if n else float("nan"), "ci95": [lo, hi]}
 
 
+def _pct(x):
+    """백분율: 정수가 아니면 소수 한 자리 (예: 199/200 = 99.5%)."""
+    v = x * 100
+    return f"{v:.0f}" if abs(v - round(v)) < 1e-9 else f"{v:.1f}"
+
+
 def _rate_str(r):
-    return f"{r['k']}/{r['n']} ({r['rate'] * 100:.0f}%, 95% 구간 {r['ci95'][0] * 100:.0f}~{r['ci95'][1] * 100:.0f}%)"
+    return f"{r['k']}/{r['n']} ({_pct(r['rate'])}%, 95% 구간 {_pct(r['ci95'][0])}~{_pct(r['ci95'][1])}%)"
 
 
 def _med(vals):
@@ -281,7 +287,8 @@ def _cause(r):
     elif r["failure_type"] == "timeout":
         parts.append(f"10 mm 도달 시각 {r['t_press_s']} s")
     if r["panel_dz"]:
-        parts.append(f"패널 dz {float(r['panel_dz']) * 100:+.1f} cm, 회전 {float(r['yaw_deg']):+.1f}°")
+        parts.append(f"패널 이동 (dx {float(r['panel_dx']) * 100:+.1f}, dy {float(r['panel_dy']) * 100:+.1f}, "
+                     f"dz {float(r['panel_dz']) * 100:+.1f}) cm, 회전 {float(r['yaw_deg']):+.1f}°")
     return ", ".join(p for p in parts if p)
 
 
@@ -407,7 +414,7 @@ def cmd_summary(_args):
             md.append(f"| {name} | {_rate_str(bsec[key])} | {_rate_str(run1[key])} | "
                       f"{(run1[key]['rate'] - bsec[key]['rate']) * 100:+.0f}%p |")
         lines, detail, _ = _failure_table(base_rows)
-        md += ["", "기준선 실패 유형:", ""] + lines + [""]
+        md += ["", "기준선 실패 유형:", ""] + lines + [""] + detail + [""]
     else:
         md += ["- 고정 좌표 기준선: 미실시", ""]
     md += ["### 명령 해석 기준선 (`digits_only`: 정규식 `(\\d+)\\s*층`의 첫 일치)", "",
@@ -419,8 +426,12 @@ def cmd_summary(_args):
                       f"{(v['correct'] - v['baseline_correct']) / v['n'] * 100:+.0f}%p | {v['false_press']} / {v['baseline_false_press']} |")
         else:
             md.append(f"| {label} | 미실시 | 미실시 | | |")
+    hold = nlu_sum.get("holdout")
     md += ["", "- dev 문장은 해석 규칙을 맞추는 데 쓴 문장이다.",
-           "- holdout은 '구현 단계에서 보지 않은 문장'이다. 이 문장들은 계획서를 만들 때 시제품 점검에 쓰였으므로 규칙 설계와 무관한 문장이라고 보지는 않는다.",
+           ("- holdout은 '구현 단계에서 보지 않은 문장'이다. 이 문장들은 계획서를 만들 때 시제품 점검에 쓰였으므로 "
+            "규칙 설계와 무관한 문장이라고 보지는 않는다. 한 번만 실행했고 결과를 보고 규칙을 고치지 않았다."
+            if isinstance(hold, dict) else
+            "- holdout: `data/commands_holdout.tsv`를 받지 못해 미실시."),
            "- team 문장: 없음(미실시).", ""]
 
     # 추가 시험

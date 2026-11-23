@@ -1,0 +1,12 @@
+{
+  "mode": "baseline_fixed",
+  "started": "2026-11-23T14:17:27",
+  "wall_s": 5.3,
+  "git_commit": "9b64b7f",
+  "n_trials": 20,
+  "nlu_init_ms": 730.5390408728272,
+  "argv": [
+    "scripts/eval.py",
+    "baseline"
+  ]
+}

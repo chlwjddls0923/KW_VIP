@@ -1,0 +1,151 @@
+{
+  "runs": {
+    "official_run1": {
+      "title": "official_run1",
+      "all": {
+        "k": 20,
+        "n": 20,
+        "rate": 1.0,
+        "ci95": [
+          0.8388698745050667,
+          1.0
+        ]
+      },
+      "basic": {
+        "k": 10,
+        "n": 10,
+        "rate": 1.0,
+        "ci95": [
+          0.7224598312333834,
+          1.0
+        ]
+      },
+      "variation": {
+        "k": 10,
+        "n": 10,
+        "rate": 1.0,
+        "ci95": [
+          0.7224598312333834,
+          1.0
+        ]
+      },
+      "gap_pp": 0.0,
+      "checks": {
+        "k": 5,
+        "n": 5
+      },
+      "t_press_median": 5.449,
+      "t_task_median": 9.870000000000001,
+      "latency_ms": {
+        "parse": 0.187,
+        "perception": 101.522,
+        "ik_approach": 4.813000000000001
+      },
+      "nlu_init_ms": 846.4832499157637,
+      "git_commit": "9b64b7f"
+    }
+  },
+  "sysinfo": {
+    "os": "macOS-26.7.1-arm64-arm-64bit",
+    "python": "3.11.13",
+    "machine": "arm64",
+    "cpu": "Apple M4",
+    "cpu_cores_physical": 10,
+    "cpu_cores_logical": 10,
+    "memory_gb": 16.0,
+    "packages": {
+      "mujoco": "4.0.1",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "pillow": "13.0.0",
+      "kiwipiepy": "0.24.1",
+      "kiwipiepy_model": "0.24.0",
+      "imageio": "2.38.2",
+      "imageio-ffmpeg": "0.8.1",
+      "psutil": "7.2.2",
+      "pytest": "9.2.0"
+    },
+    "model": "Mac16,10",
+    "macos": "26.7.1",
+    "gpu": "별도 GPU 없음. 칩 내장 GPU: Apple M4",
+    "gpu_use": "해석·인식·IK 계산은 CPU(numpy·scipy)에서 한다. 카메라 영상 생성(MuJoCo 오프스크린 렌더링)은 OS 기본 OpenGL 백엔드를 쓴다."
+  },
+  "nlu": {
+    "nlu_init_ms": 769.459875067696,
+    "date": "2026-11-23T14:19:12",
+    "git_commit": "9b64b7f",
+    "dev": {
+      "n": 78,
+      "correct": 78,
+      "false_press": 0,
+      "baseline_correct": 22,
+      "baseline_false_press": 29,
+      "parse_ms_median": 0.06555
+    },
+    "holdout": "미실시",
+    "team": "미실시"
+  },
+  "rerun_success_equal": true,
+  "baseline": {
+    "title": "baseline_run1",
+    "all": {
+      "k": 6,
+      "n": 20,
+      "rate": 0.3,
+      "ci95": [
+        0.14547527396899385,
+        0.5189767762289793
+      ]
+    },
+    "basic": {
+      "k": 6,
+      "n": 10,
+      "rate": 0.6,
+      "ci95": [
+        0.3126695474501864,
+        0.8318224187964902
+      ]
+    },
+    "variation": {
+      "k": 0,
+      "n": 10,
+      "rate": 0.0,
+      "ci95": [
+        0.0,
+        0.2775401687666166
+      ]
+    },
+    "gap_pp": 60.0
+  },
+  "supplementary": {
+    "title": "supplementary",
+    "all": {
+      "k": 199,
+      "n": 200,
+      "rate": 0.995,
+      "ci95": [
+        0.9722256001302286,
+        0.999116854010634
+      ]
+    },
+    "basic": {
+      "k": 100,
+      "n": 100,
+      "rate": 1.0,
+      "ci95": [
+        0.9630051925239981,
+        0.9999999999999999
+      ]
+    },
+    "variation": {
+      "k": 99,
+      "n": 100,
+      "rate": 0.99,
+      "ci95": [
+        0.9455124752390653,
+        0.9982326134344526
+      ]
+    },
+    "gap_pp": 1.0000000000000009
+  }
+}

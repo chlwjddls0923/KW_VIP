@@ -1,0 +1,15 @@
+{
+  "nlu_init_ms": 769.459875067696,
+  "date": "2026-11-23T14:19:12",
+  "git_commit": "9b64b7f",
+  "dev": {
+    "n": 78,
+    "correct": 78,
+    "false_press": 0,
+    "baseline_correct": 22,
+    "baseline_false_press": 29,
+    "parse_ms_median": 0.06555
+  },
+  "holdout": "미실시",
+  "team": "미실시"
+}

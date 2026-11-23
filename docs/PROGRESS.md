@@ -25,7 +25,7 @@
 | 3 인식 | 완료 | test_perception 2/2 |
 | 4 명령 해석 | 완료 | test_nlu 22/22, dev 78/78 |
 | 5 통합 | 완료 | test_pipeline 3/3, dev 시드 20/20 |
-| 6 평가 | 대기 | |
+| 6 평가 | 완료(holdout 대기) | 공식 25/25, rerun 일치, 기준선 6/20, 추가 199/200, dev 78/78 |
 | 7 영상과 문서 | 대기 | |
 
 ## 단계 0 기록
@@ -84,5 +84,18 @@
 - 개발용 시드 5001~5020: 20/20 (목표 높이 0.877, 0.882 m인 D15, D02도 성공). t_press 5.39~5.58 s, t_task 9.86~9.88 s, 인식 102~110 ms
 - `scripts/demo.py --text … [--seed N]`, 인자 없으면 입력받기
 
+## 단계 6 기록
+- `data/eval_protocol.json` 작성 후 커밋(9b64b7f)하고 실행. `eval.py official/baseline`은 커밋된 파일과 조건이 같은지 확인한 뒤에만 돈다
+- `scripts/eval.py {protocol|official|baseline|supplementary|nlu|summary} [--out DIR]`. 결과 폴더가 있으면 덮어쓰지 않고 멈춘다. 폴더마다 `trials.csv`, `details.jsonl`(메시지·검출·예외), `run_info.json`
+- `scripts/sysinfo.py` → `results/sysinfo.json`
+- 공식 `results/official_run1/`(1회 실행): 25/25. 기본 10/10, 변화 10/10, 점검 5/5. t_press 중앙값 5.45 s, t_task 9.87 s. V02는 목표 변위 13.7 mm(다른 시행 약 15 mm)
+- 재현 `results/rerun/`: success 열 25/25 일치. 첫 실행 때 `--out`의 상대 경로 때문에 마지막 출력 줄에서 오류가 났다(결과 파일 25행과 run_info는 모두 기록됨). `--out`을 절대 경로로 바꾸게 고쳤고 재현 결과는 그대로 썼다
+- 기준선 `results/baseline_run1/`: 6/20 (기본 6/10, 변화 0/10). 실패 14건 모두 '접촉 10 mm 미달'
+- 추가 `results/supplementary/`: 199/200 (기본 100/100, 변화 99/100). SV024 목표 높이 0.83 m 미검출
+- 해석 `results/nlu/`: dev 78/78(digits_only 22/78, 눌러선 안 되는 문장의 PRESS 0 / 29). holdout은 파일이 `data/`에 없어 미실시. team 없음
+- 요약: `results/summary.md`, `results/summary.json` (`eval.py summary`로 다시 만든다). 평가 방법에 정지 판단 뒤 1초 기록의 이유를 적었다
+- 공식 결과를 본 뒤 코드(판단·동작)를 고치지 않았다. `eval.py`의 경로 처리와 요약 표기만 고쳤다
+
 ## 다음 할 일
-- 단계 6: 시작 전에 `data/commands_holdout.tsv` 확인(없으면 사용자에게 요청). `data/eval_protocol.json` 작성·커밋 → `scripts/eval.py`, `scripts/sysinfo.py`
+- holdout: 사용자가 `data/commands_holdout.tsv`를 넣으면 `eval.py nlu`(holdout 1회) → `eval.py summary` → 커밋
+- 단계 7: `scripts/record.py`, `demo.py --record`, 영상, `docs/EXPLAIN.md`, `docs/MODEL_CHANGES.md`, README
