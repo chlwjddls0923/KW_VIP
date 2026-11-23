@@ -10,7 +10,7 @@
 - `data/commands_holdout.tsv`, `data/commands_team.tsv`는 사용자가 단계 6에 넣는다. 그 전에는 찾거나 만들지 않는다. `.gitignore`에 들어 있다.
 
 ## 계획과 다르게 한 것 (사용자 승인, 유지)
-1. `.gitignore`에 `data/commands_holdout.tsv`, `data/commands_team.tsv`를 넣었다(사용자 지시). 계획서 4절은 `data/` 전체 커밋이지만 이 두 파일은 커밋하지 않는다.
+1. `.gitignore`에 `data/commands_holdout.tsv`, `data/commands_team.tsv`를 넣었다(사용자 지시). holdout은 평가가 끝난 뒤 사용자 지시로 `.gitignore`에서 빼고 커밋했다. `data/commands_team.tsv`는 계속 커밋하지 않는다.
 2. 경로 상수 모음 `src/assist/paths.py`를 추가했다(계획서 5절 목록에 없는 보조 파일).
 3. `requirements.txt`는 mujoco·kiwipiepy 외 패키지도 설치된 버전으로 고정했다(재현성).
 4. `tests/test_model_facts.py`에 단계 0의 (a)(b) 외에 3절 구조 항목 테스트 4개(모델 크기, 관절 범위, 버튼·패널, 도구 축·충돌 위치)를 더 넣었다.
@@ -25,7 +25,7 @@
 | 3 인식 | 완료 | test_perception 2/2 |
 | 4 명령 해석 | 완료 | test_nlu 22/22, dev 78/78 |
 | 5 통합 | 완료 | test_pipeline 3/3, dev 시드 20/20 |
-| 6 평가 | 완료 | 공식 25/25, rerun 일치, 기준선 6/20, 추가 199/200, dev 78/78, holdout 29/30 |
+| 6 평가 | 완료 | 공식 run1·run2 25/25(일치), rerun 일치, 기준선 6/20, 추가 199/200, dev 78/78, holdout 29/30 |
 | 7 영상과 문서 | 대기 | |
 
 ## 단계 0 기록
@@ -95,7 +95,8 @@
 - 해석 `results/nlu/`: dev 78/78(digits_only 22/78, 눌러선 안 되는 문장의 PRESS 0 / 29). holdout은 사용자가 `~/Desktop/mojuco/`에 둔 파일을 사용자 지시로 `data/`에 옮긴 뒤 1회 실행: 29/30(digits_only 12/30), 눌러선 안 되는 문장의 PRESS 0 / 2. 틀린 1건 '3층 누를까 말까'는 기대 CLARIFY, 결과 REJECT(움직이지 않음). 규칙은 고치지 않았다. team 없음
 - 요약: `results/summary.md`, `results/summary.json` (`eval.py summary`로 다시 만든다). 평가 방법에 정지 판단 뒤 1초 기록의 이유를 적었다
 - 공식 결과를 본 뒤 코드(판단·동작)를 고치지 않았다. `eval.py`의 경로 처리와 요약 표기만 고쳤다
+- 사용자 지시: `eval.py` 수정도 공식 결과를 본 뒤 고친 코드이므로 `results/CHANGELOG.md`에 적고(커밋 2926bc8) `results/official_run2/`에 공식 25회를 다시 실행했다. run2 25/25, success 열 run1과 25/25 일치(목표 변위·실패 유형 열도 같음). `summary.md`에 run1·run2를 모두 적고 비교 표를 넣었다
+- 사용자 지시: holdout 평가가 끝났으므로 `.gitignore`에서 `data/commands_holdout.tsv`를 빼고 `data/commands_holdout.tsv`, `results/nlu/holdout.csv`를 커밋했다(97ae11a). `data/commands_team.tsv` 줄은 그대로
 
 ## 다음 할 일
-- `results/nlu/holdout.csv`(holdout 30문장 전체 포함)는 커밋 보류: 원본 tsv가 .gitignore 대상이라 사용자 확인 대기. `summary.md`에는 틀린 1문장만 들어 있다
 - 단계 7: `scripts/record.py`, `demo.py --record`, 영상, `docs/EXPLAIN.md`, `docs/MODEL_CHANGES.md`, README
