@@ -65,3 +65,20 @@ README의 명령을 그대로 실행했다.
 - README대로 되지 않은 곳: 없음 → README 수정 없음.
 - 공식·기준선·추가 평가(`eval.py official/baseline/supplementary`)는 지시 범위 밖이라 실행하지 않았다.
 - `/tmp/mojuco_clone`은 03:35에 지웠다.
+
+## 작업 2. 팀원 PC 안내서 (03:35~03:37)
+- main `docs/TEAM_SETUP.md` (커밋 f4cd6ce)
+  - push에 성공했으므로 `git clone https://github.com/chlwjddls0923/KW_VIP.git` 기준으로 썼다.
+  - macOS·Windows 설치, 확인 명령(check_env, pytest 42개, 명령 점검 5문장, 시드 5001 데모, eval.py nlu)과 기대 출력, 자주 나는 오류를 적었다.
+  - 작업 1에서 확인한 것은 ✅, Windows는 모두 [미확인]으로 구분했다.
+- exp/llm-fallback `experiments/llm/TEAM_SETUP_LLM.md` (커밋 166c763): llama-cpp-python 소스 빌드 주의점(Windows C++ 빌드 도구 [확인 필요]), 모델 받는 법(download.py, 후보 표).
+- 안내서의 `eval.py nlu`는 `results/nlu/dev.csv`를 다시 쓴다. 그래서 팀원 PC에서는 커밋하지 말라고 적었다.
+
+## 작업 3. 발표 재료 (03:37~03:40)
+- main `docs/PRESENTATION_NOTES.md`
+  - 5분 구성 6절과 절마다 표·수치·출처 경로를 적었다. 네 질문에는 한 문단씩 답하고 코드 위치를 붙였다(지금 코드와 줄 번호를 확인함).
+  - 실패 사례 절에 SV024 재확인 문장, SV060·SV094, link1 투명 반사실을 넣었다.
+  - LLM 수치는 `git show exp/llm-fallback:...`로 읽었다. adv_dev '개발용, 낙관적', holdout '모델 때문에 바뀐 문장 0', adv_test '미실시', '아래로 내려가자' 사례를 넣었다.
+- 그림 `docs/figures/`
+  - `success_bar.png`: matplotlib이 없어(설치 금지) pillow로 그렸다. 스크립트 `experiments/figures/make_success_bar.py`, 수치는 trials.csv에서 셈: 20/20 vs 6/20, 10/10 vs 6/10, 10/10 vs 0/10.
+  - `sv024_link1_occlusion.png`: `results/diag/SV024_zoom_raw.png`를 복사했다.
