@@ -26,7 +26,7 @@
 | 4 명령 해석 | 완료 | test_nlu 22/22, dev 78/78 |
 | 5 통합 | 완료 | test_pipeline 3/3, dev 시드 20/20 |
 | 6 평가 | 완료 | 공식 run1·run2 25/25(일치), rerun 일치, 기준선 6/20, 추가 199/200, dev 78/78, holdout 29/30 |
-| 7 영상과 문서 | 대기 | |
+| 7 영상과 문서 | 완료 | 영상 8개(평가와 일치), EXPLAIN·MODEL_CHANGES·README |
 
 ## 단계 0 기록
 - 설치: mujoco 4.0.1, kiwipiepy 0.24.1 (+kiwipiepy_model 0.24.0), numpy 2.4.6, scipy 1.17.1, pillow 13.0.0, imageio 2.38.2, imageio-ffmpeg 0.8.1, psutil 7.2.2, pytest 9.2.0
@@ -62,9 +62,6 @@
 - macOS 렌더링 경고: `ARB_clip_control unavailable while mjDEPTH_ZEROFAR requested, depth accuracy will be limited`. 깊이 정밀도가 제한된다는 뜻이지만 위 오차 기준은 통과
 - 숫자 텍스처는 뒤집지 않는다(정면화 패치에서 바로 선 숫자로 보임, `out/perception_debug.png`)
 
-## 뒤 단계에서 할 일 (사용자 지시)
-- 단계 7: `docs/EXPLAIN.md`의 실행 환경에 macOS 깊이 정밀도 경고(`ARB_clip_control unavailable …`)와 단계 3 측정값(중심 오차 중앙값 0.46 mm·최대 1.28 mm, 법선 오차 최대 0.013°)을 적는다.
-
 ## 단계 4 기록
 - `nlu.py`: `parse(text)` → {intent, floor, scores, events, floors, candidates, tokens}, `ground(parsed, seen_floors)` → {action, floor, reason('ok'/'not_visible'/'wait'/'clarify'/'unsupported')}, `digits_only(text)`, `get_kiwi()`, `INIT_MS`
 - `data/commands_dev.tsv`: 부록 F 78문장 (PRESS 28, WAIT 24, REJECT 19, CLARIFY 7)
@@ -98,5 +95,15 @@
 - 사용자 지시: `eval.py` 수정도 공식 결과를 본 뒤 고친 코드이므로 `results/CHANGELOG.md`에 적고(커밋 2926bc8) `results/official_run2/`에 공식 25회를 다시 실행했다. run2 25/25, success 열 run1과 25/25 일치(목표 변위·실패 유형 열도 같음). `summary.md`에 run1·run2를 모두 적고 비교 표를 넣었다
 - 사용자 지시: holdout 평가가 끝났으므로 `.gitignore`에서 `data/commands_holdout.tsv`를 빼고 `data/commands_holdout.tsv`, `results/nlu/holdout.csv`를 커밋했다(97ae11a). `data/commands_team.tsv` 줄은 그대로
 
+## 단계 7 기록
+- `src/assist/record.py`(`Recorder`): 판단·동작 코드를 고치지 않고 say 콜백·tick_hooks·녹화 중 pipeline의 detect/parse 감싸기로 화면을 만든다. 왼쪽 overview, 오른쪽 head_rgb(검출 원, 목표 노란색, 2배 확대 화면), 아래 글자(명령 영문 풀이, 판단, 목표 변위, 시뮬레이션 경과 시간). 앞뒤 1초 정지 화면은 물리 진행 없이 같은 프레임을 반복
+- 영상 글자는 영문이다. 한글 글꼴 파일이 프로젝트 폴더 밖(macOS 시스템 글꼴)에 있어 쓰지 않았다(계획서 단계 7의 대안)
+- `scripts/record.py --trial ID` → `results/video/{ID}_{결과}[_seed{시드}].mp4`, `results/video/videos.json`, `results/video/index.md`. 녹화 결과가 해당 trials.csv(success·실패 유형·목표 변위)와 같은지 기록
+- `scripts/demo.py --text … --record out.mp4`
+- 영상 8개(모두 평가와 일치): V03 성공, C01~C05, SV024 실패(추가 시험, 공식 20회 밖, 인식 미검출, 시드 4024), FB03 기준선 실패(비교용 보조, 접촉 10 mm 미달 7.0 mm, 시드 1003). 사용자 지시대로 일부러 실패를 만들지 않았다
+- 문서: `docs/EXPLAIN.md`(실행 환경과 macOS 깊이 경고·단계 3 측정값, 네 가지 질문과 코드 위치, CLARIFY 경우, 알려진 한계와 추가로 확인한 점, 영상 목록), `docs/MODEL_CHANGES.md`, `README.md`
+- README의 데모 명령 5개를 그대로 실행해 확인. pytest 42/42
+- 추가로 확인한 한계(규칙은 고치지 않음): '기다렸다가 3층 눌러' → PRESS(3) 즉시 누름
+
 ## 다음 할 일
-- 단계 7: `scripts/record.py`, `demo.py --record`, 영상, `docs/EXPLAIN.md`, `docs/MODEL_CHANGES.md`, README
+- 전체 완료. 사람이 확인할 것: 영상(results/video/), 숫자 방향(out/scene_head.png, out/perception_debug.png), 발표에 밝힐 모델 수정(docs/MODEL_CHANGES.md), 팀명·팀원·발표일 [대괄호]

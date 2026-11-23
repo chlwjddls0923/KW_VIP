@@ -1,0 +1,246 @@
+{
+  "V03": {
+    "file": "V03_success_seed2003.mp4",
+    "trial_id": "V03",
+    "set": "variation",
+    "mode": "full",
+    "seed": 2003,
+    "text": "엘리베이터 4층을 선택해 줘",
+    "expected": "PRESS(4)",
+    "action": "PRESS",
+    "success": true,
+    "failure_type": "",
+    "failure_ko": "",
+    "target_mm": 15.384,
+    "target_z": 0.9602691566091914,
+    "panel_d_cm": [
+      -4.11,
+      3.81,
+      3.03
+    ],
+    "yaw_deg": 9.97,
+    "light": 1.189,
+    "layout": "413625",
+    "frames": 296,
+    "seconds": 11.84,
+    "source_csv": "official_run1",
+    "matches_source": true,
+    "messages": [
+      "4층 버튼을 누릅니다",
+      "4층 버튼 눌림 확인 (15.4 mm)"
+    ]
+  },
+  "C01": {
+    "file": "C01_success.mp4",
+    "trial_id": "C01",
+    "set": "check",
+    "mode": "full",
+    "seed": null,
+    "text": "3층 버튼을 눌러줘",
+    "expected": "PRESS(3)",
+    "action": "PRESS",
+    "success": true,
+    "failure_type": "",
+    "failure_ko": "",
+    "target_mm": 15.098,
+    "target_z": 1.03,
+    "panel_d_cm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_deg": 0.0,
+    "light": 1.0,
+    "layout": "123456",
+    "frames": 297,
+    "seconds": 11.88,
+    "source_csv": "official_run1",
+    "matches_source": true,
+    "messages": [
+      "3층 버튼을 누릅니다",
+      "3층 버튼 눌림 확인 (15.1 mm)"
+    ]
+  },
+  "C02": {
+    "file": "C02_success.mp4",
+    "trial_id": "C02",
+    "set": "check",
+    "mode": "full",
+    "seed": null,
+    "text": "엘리베이터 3층을 선택해 줘",
+    "expected": "PRESS(3)",
+    "action": "PRESS",
+    "success": true,
+    "failure_type": "",
+    "failure_ko": "",
+    "target_mm": 15.098,
+    "target_z": 1.03,
+    "panel_d_cm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_deg": 0.0,
+    "light": 1.0,
+    "layout": "123456",
+    "frames": 297,
+    "seconds": 11.88,
+    "source_csv": "official_run1",
+    "matches_source": true,
+    "messages": [
+      "3층 버튼을 누릅니다",
+      "3층 버튼 눌림 확인 (15.1 mm)"
+    ]
+  },
+  "C03": {
+    "file": "C03_success.mp4",
+    "trial_id": "C03",
+    "set": "check",
+    "mode": "full",
+    "seed": null,
+    "text": "버튼은 누르지 말고 대기해",
+    "expected": "WAIT",
+    "action": "WAIT",
+    "success": true,
+    "failure_type": "",
+    "failure_ko": "",
+    "target_mm": null,
+    "target_z": null,
+    "panel_d_cm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_deg": 0.0,
+    "light": 1.0,
+    "layout": "123456",
+    "frames": 75,
+    "seconds": 3.0,
+    "source_csv": "official_run1",
+    "matches_source": true,
+    "messages": [
+      "대기합니다"
+    ]
+  },
+  "C04": {
+    "file": "C04_success.mp4",
+    "trial_id": "C04",
+    "set": "check",
+    "mode": "full",
+    "seed": null,
+    "text": "3층 누르지 마",
+    "expected": "WAIT",
+    "action": "WAIT",
+    "success": true,
+    "failure_type": "",
+    "failure_ko": "",
+    "target_mm": null,
+    "target_z": null,
+    "panel_d_cm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_deg": 0.0,
+    "light": 1.0,
+    "layout": "123456",
+    "frames": 75,
+    "seconds": 3.0,
+    "source_csv": "official_run1",
+    "matches_source": true,
+    "messages": [
+      "대기합니다"
+    ]
+  },
+  "C05": {
+    "file": "C05_success.mp4",
+    "trial_id": "C05",
+    "set": "check",
+    "mode": "full",
+    "seed": null,
+    "text": "현재 장면에 없는 7층 버튼을 눌러줘",
+    "expected": "REJECT",
+    "action": "REJECT",
+    "success": true,
+    "failure_type": "",
+    "failure_ko": "",
+    "target_mm": null,
+    "target_z": null,
+    "panel_d_cm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_deg": 0.0,
+    "light": 1.0,
+    "layout": "123456",
+    "frames": 75,
+    "seconds": 3.0,
+    "source_csv": "official_run1",
+    "matches_source": true,
+    "messages": [
+      "7층 버튼이 보이지 않아 수행할 수 없습니다"
+    ]
+  },
+  "SV024": {
+    "file": "SV024_fail_not_detected_seed4024.mp4",
+    "trial_id": "SV024",
+    "set": "supp_variation",
+    "mode": "full",
+    "seed": 4024,
+    "text": "엘리베이터 5층을 선택해 줘",
+    "expected": "PRESS(5)",
+    "action": "REJECT",
+    "success": false,
+    "failure_type": "not_detected",
+    "failure_ko": "인식 미검출",
+    "target_mm": 0.0,
+    "target_z": 0.8352423298827976,
+    "panel_d_cm": [
+      0.2934,
+      -1.5739,
+      -9.4758
+    ],
+    "yaw_deg": 6.1455,
+    "light": 0.878,
+    "layout": "453621",
+    "frames": 75,
+    "seconds": 3.0,
+    "source_csv": "supplementary",
+    "matches_source": true,
+    "messages": [
+      "5층 버튼이 보이지 않아 수행할 수 없습니다"
+    ]
+  },
+  "FB03": {
+    "file": "FB03_baseline_fail_under_10mm_seed1003.mp4",
+    "trial_id": "FB03",
+    "set": "basic",
+    "mode": "baseline_fixed",
+    "seed": 1003,
+    "text": "6층 좀 눌러 줄래?",
+    "expected": "PRESS(6)",
+    "action": "PRESS",
+    "success": false,
+    "failure_type": "under_10mm",
+    "failure_ko": "접촉 10 mm 미달",
+    "target_mm": 7.036,
+    "target_z": 1.1296807596313312,
+    "panel_d_cm": [
+      -1.87,
+      -1.46,
+      -0.03
+    ],
+    "yaw_deg": 0.0,
+    "light": 1.0,
+    "layout": "123456",
+    "frames": 296,
+    "seconds": 11.84,
+    "source_csv": "baseline_run1",
+    "matches_source": true,
+    "messages": [
+      "6층 버튼을 누릅니다",
+      "6층 버튼이 눌리지 않았습니다 (7.0 mm)"
+    ]
+  }
+}
