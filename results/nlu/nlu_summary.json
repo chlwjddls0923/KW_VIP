@@ -1,15 +1,23 @@
 {
-  "nlu_init_ms": 769.459875067696,
-  "date": "2026-11-23T14:19:12",
-  "git_commit": "9b64b7f",
+  "nlu_init_ms": 902.9455839190632,
+  "date": "2026-11-23T14:23:24",
+  "git_commit": "ad0b860",
   "dev": {
     "n": 78,
     "correct": 78,
     "false_press": 0,
     "baseline_correct": 22,
     "baseline_false_press": 29,
-    "parse_ms_median": 0.06555
+    "parse_ms_median": 0.06434999999999999
   },
-  "holdout": "미실시",
+  "holdout": {
+    "n": 30,
+    "correct": 29,
+    "false_press": 0,
+    "baseline_correct": 12,
+    "baseline_false_press": 2,
+    "parse_ms_median": 0.0686,
+    "note": "1회 실행"
+  },
   "team": "미실시"
 }

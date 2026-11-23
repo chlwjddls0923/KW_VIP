@@ -25,7 +25,7 @@
 | 3 인식 | 완료 | test_perception 2/2 |
 | 4 명령 해석 | 완료 | test_nlu 22/22, dev 78/78 |
 | 5 통합 | 완료 | test_pipeline 3/3, dev 시드 20/20 |
-| 6 평가 | 완료(holdout 대기) | 공식 25/25, rerun 일치, 기준선 6/20, 추가 199/200, dev 78/78 |
+| 6 평가 | 완료 | 공식 25/25, rerun 일치, 기준선 6/20, 추가 199/200, dev 78/78, holdout 29/30 |
 | 7 영상과 문서 | 대기 | |
 
 ## 단계 0 기록
@@ -92,10 +92,10 @@
 - 재현 `results/rerun/`: success 열 25/25 일치. 첫 실행 때 `--out`의 상대 경로 때문에 마지막 출력 줄에서 오류가 났다(결과 파일 25행과 run_info는 모두 기록됨). `--out`을 절대 경로로 바꾸게 고쳤고 재현 결과는 그대로 썼다
 - 기준선 `results/baseline_run1/`: 6/20 (기본 6/10, 변화 0/10). 실패 14건 모두 '접촉 10 mm 미달'
 - 추가 `results/supplementary/`: 199/200 (기본 100/100, 변화 99/100). SV024 목표 높이 0.83 m 미검출
-- 해석 `results/nlu/`: dev 78/78(digits_only 22/78, 눌러선 안 되는 문장의 PRESS 0 / 29). holdout은 파일이 `data/`에 없어 미실시. team 없음
+- 해석 `results/nlu/`: dev 78/78(digits_only 22/78, 눌러선 안 되는 문장의 PRESS 0 / 29). holdout은 사용자가 `~/Desktop/mojuco/`에 둔 파일을 사용자 지시로 `data/`에 옮긴 뒤 1회 실행: 29/30(digits_only 12/30), 눌러선 안 되는 문장의 PRESS 0 / 2. 틀린 1건 '3층 누를까 말까'는 기대 CLARIFY, 결과 REJECT(움직이지 않음). 규칙은 고치지 않았다. team 없음
 - 요약: `results/summary.md`, `results/summary.json` (`eval.py summary`로 다시 만든다). 평가 방법에 정지 판단 뒤 1초 기록의 이유를 적었다
 - 공식 결과를 본 뒤 코드(판단·동작)를 고치지 않았다. `eval.py`의 경로 처리와 요약 표기만 고쳤다
 
 ## 다음 할 일
-- holdout: 사용자가 `data/commands_holdout.tsv`를 넣으면 `eval.py nlu`(holdout 1회) → `eval.py summary` → 커밋
+- `results/nlu/holdout.csv`(holdout 30문장 전체 포함)는 커밋 보류: 원본 tsv가 .gitignore 대상이라 사용자 확인 대기. `summary.md`에는 틀린 1문장만 들어 있다
 - 단계 7: `scripts/record.py`, `demo.py --record`, 영상, `docs/EXPLAIN.md`, `docs/MODEL_CHANGES.md`, README

@@ -433,6 +433,16 @@ def cmd_summary(_args):
             if isinstance(hold, dict) else
             "- holdout: `data/commands_holdout.tsv`를 받지 못해 미실시."),
            "- team 문장: 없음(미실시).", ""]
+    for name in ("holdout", "team"):
+        path = RESULTS / "nlu" / f"{name}.csv"
+        if isinstance(nlu_sum.get(name), dict) and path.exists():
+            with open(path, encoding="utf-8") as f:
+                wrong = [r for r in csv.DictReader(f) if r["correct"] != "1"]
+            md += [f"{name}에서 틀린 문장 ({len(wrong)}건, 결과를 보고 규칙을 고치지 않음):", ""]
+            md += [f"- '{r['text']}': 기대 {r['expected_action']}{('(' + r['expected_floor'] + ')') if r['expected_floor'] else ''}, "
+                   f"결과 {r['action']}{('(' + r['floor'] + ')') if r['floor'] else ''}, 사건 {r['events']}"
+                   + (" — 움직이지 않음" if r["action"] != "PRESS" else "") for r in wrong] or ["- 없음"]
+            md += [""]
 
     # 추가 시험
     if supp_rows is not None:
