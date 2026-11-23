@@ -14,6 +14,7 @@
 2. 경로 상수 모음 `src/assist/paths.py`를 추가했다(계획서 5절 목록에 없는 보조 파일).
 3. `requirements.txt`는 mujoco·kiwipiepy 외 패키지도 설치된 버전으로 고정했다(재현성).
 4. `tests/test_model_facts.py`에 단계 0의 (a)(b) 외에 3절 구조 항목 테스트 4개(모델 크기, 관절 범위, 버튼·패널, 도구 축·충돌 위치)를 더 넣었다.
+5. (단계 5) 움직이지 않는 판단 뒤에도 1초 진행해 정지 상태를 기록한다. 이유는 단계 5 기록 참고.
 
 ## 단계별 상태
 | 단계 | 상태 | 비고 |
@@ -76,6 +77,7 @@
 - `protocol.py`: `Trial`, `basic_trial`, `variation_trial`(부록 E 추출 순서 그대로), `check_trials`, `official_trials`, `baseline_trials`(FB/FV), `supplementary_trials`, `dev_trials`, `judge(trial, rec)`, `wilson`, 실패 유형 상수·한국어 이름
 - `pipeline.py`: `Assistant(scene, mode='full'|'baseline_fixed', say)`.`run(text)`, `SceneCache`, `run_trial(trial, cache)` → trials.csv 한 줄, `CSV_COLUMNS`
 - 움직이지 않는 판단(WAIT·CLARIFY·REJECT·층 없음·IK 불가) 뒤에도 1초 진행해 정지 상태를 기록한다(`STILL_HOLD_S`)
+  - 이유(사용자 승인, 유지): 판단 직후 끝내면 '팔 관절 최대 변화 < 0.02 rad', '버튼 slide < 1 mm' 판정이 측정 시간 0으로 이루어진다. 실제로 정지해 있는지 1초 동안 기록해 판정 근거로 삼는다. 단계 6 `results/summary.md`의 평가 방법에도 적는다.
 - 기준선 `baseline_fixed`는 인식 없이 보이는 층 = 1~6, 라벨 중심 = (0.43, −0.87, 0.99) + (x, 0.081, z), 법선 (0, 1, 0)
 - 명령 8종 8/8, 움직이면 안 되는 명령 관절 최대 변화 0 rad(표시 자릿수 기준)
 - 버튼 1개 장면: '3층 눌러줘' 15.3 mm 성공, '4층 눌러줘' 거부(관절 8.9e−8 rad)
